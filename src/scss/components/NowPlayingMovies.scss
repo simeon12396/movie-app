@@ -1,0 +1,33 @@
+.now-playing-movies {
+
+    &-heading {
+        color: white;
+        font-weight: 400;
+        font-size: 20px;
+        margin-right: 5px;
+        margin-left: 50px;
+    };
+    
+    &-slider {
+        color: white;
+        margin-top: 10px;
+
+        .each-movie {
+            height: 330px;
+
+            img {
+                height: 80%;
+                background-position: center;
+                margin-bottom: 10px;
+            }
+
+            &-star {
+                display: flex;
+            }
+
+            &-average {
+                margin-left: 10px;
+            }
+        }
+    }
+}

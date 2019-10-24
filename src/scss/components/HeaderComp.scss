@@ -1,0 +1,50 @@
+@import '../base/_typography.scss';
+
+.header-comp {
+    background-color: whitesmoke;
+    border-right: 1px solid #005cbf;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    
+    .header {
+        padding: 2rem 2rem 0;
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+        min-height: 100vh;
+        background-color: black;
+        color: white;
+
+        &-logo {
+            width: 50px;
+        }
+
+        &-nav {
+            display: flex;
+            flex-direction: column;  
+        }
+
+        &-li {
+            list-style-type: none;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            a {
+                color: white;
+
+                .icons {
+                    font-size: 20px;
+    
+                    &:hover {
+                        color: #005cbf;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+}

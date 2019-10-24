@@ -1,0 +1,14 @@
+@import '../base/_typography.scss';
+
+.home-page {
+
+    main {
+        margin-left: 90px;
+        background-color: #201F23;
+        overflow: hidden;
+        
+        .out-focus {
+            margin: 20px;
+        }
+    }
+}
