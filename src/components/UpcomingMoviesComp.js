@@ -6,7 +6,7 @@ import '../scss/components/UpcomingMovies.scss';
 import StarRatingComponent from 'react-star-rating-component';
 import {useFetchMovies as useFetchUpcomingMovies } from '../helpers/requests';
 
-const UpcomingMovies = () => {
+const UpcomingMoviesComp = () => {
 
     const settings = {
         arrows: true,
@@ -14,7 +14,7 @@ const UpcomingMovies = () => {
         slidesToScroll: 1,
         autoplay: true,
         pauseOnHover: false,
-        autoplaySpeed: 11600,
+        autoplaySpeed: 9000,
         infinite: true,
         speed: 400,
         cssEase: 'linear',
@@ -80,4 +80,4 @@ const UpcomingMovies = () => {
     };
 };
 
-export default UpcomingMovies;
+export default UpcomingMoviesComp;

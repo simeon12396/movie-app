@@ -1,0 +1,97 @@
+.particular-movies {
+    &-heading {
+        color: white;
+        font-weight: 400;
+        font-size: 20px;
+        margin-right: 5px;
+        margin-left: 50px;
+    }
+    
+    &-slider {
+        color: white;
+        margin-top: 10px;
+
+        .each-movie {
+            height: 330px;
+            position: relative;
+            width: 84% !important;
+
+            &:hover .each-movie-overlay-effect {
+                animation: rotate-in-2-fwd 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+                cursor: pointer;
+            }
+
+            &-title {
+                display: inline-block;
+                width: 80%;
+                font-size: 16px;
+            }
+
+            img {
+                height: 80%;
+                background-position: center;
+                margin-bottom: 10px;
+
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+
+            &-star {
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: flex;
+            }
+
+            &-average {
+                margin-left: 10px;
+            }
+
+            &-overlay-effect {
+                position: absolute;
+                top: 0;
+                left: 0;
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-box-pack: center;
+                    -ms-flex-pack: center;
+                        justify-content: center;
+                -webkit-box-align: center;
+                    -ms-flex-align: center;
+                        align-items: center;
+                height: 80%;
+                width: 100%;
+                font-size: 40px;
+                opacity: 0;
+                background-color: transparent;
+            }
+        }
+    }
+}
+
+@-webkit-keyframes rotate-in-2-fwd {
+    0% {
+      -webkit-transform: translateZ(-200px) rotate(-45deg);
+              transform: translateZ(-200px) rotate(-45deg);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateZ(0) rotate(0);
+              transform: translateZ(0) rotate(0);
+      opacity: 1;
+    }
+  }
+  @keyframes rotate-in-2-fwd {
+    0% {
+      -webkit-transform: translateZ(-200px) rotate(-45deg);
+              transform: translateZ(-200px) rotate(-45deg);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateZ(0) rotate(0);
+              transform: translateZ(0) rotate(0);
+      opacity: 1;
+    }
+  }
+  

@@ -1,7 +1,7 @@
 import React from 'react';
 import '../scss/components/HeaderComp.scss';
-import { faHome, faFilm, faTv, faSearch, faUserPlus, faSignInAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHome, faFilm, faTv, faSearch, faUserPlus, faSignInAlt } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 const HeaderComp = () => {
