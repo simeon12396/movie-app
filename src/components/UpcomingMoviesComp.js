@@ -4,7 +4,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import '../scss/components/UpcomingMovies.scss';
 import StarRatingComponent from 'react-star-rating-component';
-import {useFetchMovies as useFetchUpcomingMovies } from '../helpers/requests';
+import {useFetchDataFromTheMovieAPI as useFetchUpcomingMovies } from '../helpers/requests';
+import {sliceText} from '../helpers/methods.js';
 
 const UpcomingMoviesComp = () => {
 
@@ -22,14 +23,6 @@ const UpcomingMoviesComp = () => {
     };
 
     const imageUrlApi = 'http://image.tmdb.org/t/p/original';
-   
-    const sliceText = (currentOverview) => {
-        const slicedOverview = currentOverview.slice(0, 200);
-
-        const newOverview = `${slicedOverview}...`;
-
-        return newOverview;
-    };
 
     const upcomingMovies = useFetchUpcomingMovies('https://api.themoviedb.org/3/movie/upcoming?api_key=ce30a4e46c4adcde72216d273f3f7ba0&language=en-US&page=1');
     

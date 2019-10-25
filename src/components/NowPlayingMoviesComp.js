@@ -1,5 +1,5 @@
 import React from 'react';
-import {useFetchMovies as useFetchNowPlayingMovies} from '../helpers/requests.js';
+import {useFetchDataFromTheMovieAPI as useFetchNowPlayingMovies} from '../helpers/requests.js';
 import ParticularMovies from '../layouts/ParticularMovies.js';
 
 const NowPlayingMoviesComp = () => {

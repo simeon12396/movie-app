@@ -1,5 +1,5 @@
 import React from 'react';
-import {useFetchMovies as useFetchPopularMovies} from '../helpers/requests.js';
+import {useFetchDataFromTheMovieAPI as useFetchPopularMovies} from '../helpers/requests.js';
 import ParticularMovies from '../layouts/ParticularMovies.js';
 
 const PopularMoviesComp = () => {

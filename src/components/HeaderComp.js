@@ -15,7 +15,7 @@ const HeaderComp = () => {
                         </Link>
                     </li>
                     <li className="header-li">
-                        <Link to="#">
+                        <Link to="/all-movies">
                             <FontAwesomeIcon icon={faFilm} className="icons" />
                         </Link>
                     </li>

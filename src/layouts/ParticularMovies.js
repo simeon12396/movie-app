@@ -11,13 +11,12 @@ import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 const ParticularMovies = (props) => {
     
     const settings = {
-            centerMode: true,
-            arrows: false,
+            arrows: true,
             slidesToShow: 8,
             slidesToScroll: 1,
             autoplay: true,
             pauseOnHover: false,
-            autoplaySpeed: 2500,
+            autoplaySpeed: 6000,
             infinite: true,
             speed: 400,
             cssEase: 'linear',
@@ -56,7 +55,7 @@ const ParticularMovies = (props) => {
                 <div className="particular-movies-comp particular-movies">
                     <span className="particular-movies-heading">{props.typeOfMovies}</span>
     
-                    <Link to="#" className="particular-movies-explore">Explore all</Link>
+                      <Link to="#" className="particular-movies-explore">Explore all</Link>
     
                     <Slider {...settings} className="particular-movies-slider">
                         {eachMovie}

@@ -1,5 +1,5 @@
 import React from 'react';
-import {useFetchMovies as useFetchTopRatedMovies} from '../helpers/requests.js';
+import {useFetchDataFromTheMovieAPI as useFetchTopRatedMovies} from '../helpers/requests.js';
 import ParticularMovies from '../layouts/ParticularMovies.js';
 
 const TopRatedMoviesComp = () => {
