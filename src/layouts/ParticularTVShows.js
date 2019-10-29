@@ -8,7 +8,7 @@ import StarRatingComponent from 'react-star-rating-component';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 
-const ParticularTVShows = (props) => {
+const ParticularTvShows = (props) => {
     const settings = {
         arrows: true,
         slidesToShow: 8,
@@ -54,7 +54,7 @@ const ParticularTVShows = (props) => {
             <div className="particular-tv-shows-comp particular-tv-shows">
                 <span className="particular-tv-shows-heading">{props.typeOfTvShows}</span>
 
-                  <Link to="#" className="particular-tv-shows-explore">Explore all</Link>
+                  <Link to={props.routePath} className="particular-tv-shows-explore">Explore all</Link>
 
                 <Slider {...settings} className="particular-tv-shows-slider">
                     {eachTvShow}
@@ -66,4 +66,4 @@ const ParticularTVShows = (props) => {
     };
 };
 
-export default ParticularTVShows;
+export default ParticularTvShows;
