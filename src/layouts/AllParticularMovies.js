@@ -9,7 +9,8 @@ import { Link } from "react-router-dom";
 const AllParticularMovies = (props) => {
 
     const imageUrlApi = 'http://image.tmdb.org/t/p/original';
-
+    console.log('tuk sme')
+    console.log(props.allMovies)
         if(props.allMovies) {
             const eachMovie = props.allMovies.map((movie, index) => {
                 return(
@@ -29,7 +30,7 @@ const AllParticularMovies = (props) => {
                             <span className="each-movie-average">{movie.vote_average}</span>
                         </div>
 
-                        <Link to="#" className="each-movie-overlay-effect">
+                        <Link to={`/movie/${movie.id}`} className="each-movie-overlay-effect">
                             <FontAwesomeIcon icon={faPlusCircle} className="icons" />
                         </Link>
                     </div>

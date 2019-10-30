@@ -23,7 +23,7 @@ const ParticularTvShows = (props) => {
     };
 
     const imageUrlApi = 'http://image.tmdb.org/t/p/original';
-    
+    console.log(props.tvShows)
     if(props.tvShows) {
         const eachTvShow = props.tvShows.map((show, index) => {
             return(
@@ -43,7 +43,7 @@ const ParticularTvShows = (props) => {
                         <span className="each-tv-show-average">{show.vote_average}</span>
                     </div>
 
-                    <Link to="#" className="each-tv-show-overlay-effect">
+                    <Link to='#' className="each-tv-show-overlay-effect">
                         <FontAwesomeIcon icon={faPlusCircle} className="icons" />
                     </Link>
                 </div>

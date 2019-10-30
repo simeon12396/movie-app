@@ -6,6 +6,7 @@ import '../scss/components/UpcomingMovies.scss';
 import StarRatingComponent from 'react-star-rating-component';
 import {useFetchDataFromTheMovieAPI as useFetchUpcomingMovies } from '../helpers/requests';
 import {sliceText} from '../helpers/methods.js';
+import { Link } from "react-router-dom";
 
 const UpcomingMoviesComp = () => {
 
@@ -32,7 +33,9 @@ const UpcomingMoviesComp = () => {
                 <div className="upcoming-comp" key={index}>
                     <div className="slide">
                         <div className="slide-details">
-                            <h3 className="slide-title">{movie.title}</h3>
+                            <Link to={`/movie/${movie.id}`}>
+                                <h3 className="slide-title">{movie.title}</h3>
+                            </Link>
                             
                             <div className="slide-stars">
                                 <StarRatingComponent
@@ -49,7 +52,9 @@ const UpcomingMoviesComp = () => {
                                 <span className="slide-release">{movie.release_date}</span>
                             </div>
         
-                            <span className="slide-overview">{sliceText(movie.overview)}</span>
+                            <Link to={`/movie/${movie.id}`}>
+                                <span className="slide-overview">{sliceText(movie.overview)}</span>
+                            </Link>
         
                             <button className="btn btn-primary slider-btn">Watch trailer</button>
                         </div>

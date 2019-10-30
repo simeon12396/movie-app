@@ -1,6 +1,15 @@
 .slide {
     position: relative;
 
+    a {
+        color: white;
+        transition: all .2s ease-in-out;
+
+        &:hover {
+            color: inherit;
+        }
+    }
+
     &-details {
         color: white;
         position: absolute;

@@ -9,6 +9,7 @@ import AllPopularMoviesPage from './pages/AllPopularMoviesPage.js';
 import AllPopularTvShowsPage from './pages/AllPopularTvShowsPage.js';
 import AllTopRatedTvShowsPage from './pages/AllTopRatedTvShowsPage.js';
 import AllOnTheAirTvShowsPage from './pages/AllOnTheAirTvShowsPage.js';
+import MoreInfoForEachMoviePage from './pages/MoreInfoForEachMoviePage.js';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path="/category/popular-tv-shows" component={AllPopularTvShowsPage} />
             <Route path="/category/top-rated-tv-shows" component={AllTopRatedTvShowsPage} />
             <Route path="/category/on-the-air-tv-shows" component={AllOnTheAirTvShowsPage} />
+            <Route path="/movie/:id" component={MoreInfoForEachMoviePage} />
           </Switch>
         </Router>
     </div>

@@ -44,7 +44,7 @@ const ParticularMovies = (props) => {
                             <span className="each-movie-average">{movie.vote_average}</span>
                         </div>
 
-                        <Link to="#" className="each-movie-overlay-effect">
+                        <Link to={`/movie/${movie.id}`} className="each-movie-overlay-effect">
                             <FontAwesomeIcon icon={faPlusCircle} className="icons" />
                         </Link>
                     </div>
