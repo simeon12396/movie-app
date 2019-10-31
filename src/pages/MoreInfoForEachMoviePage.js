@@ -8,8 +8,27 @@ import { faHeart, faPlay,faLink } from "@fortawesome/free-solid-svg-icons";
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import '../scss/pages/MoreInfoForEachMoviePage.scss';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
+import Slider from 'react-slick';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const MoreInfoForEachMoviePage = (props) => {
+
+    const sliderSettings = {
+        arrows: true,
+        slidesToShow: 5,
+        slidesToScroll: 5,
+        autoplay: true,
+        pauseOnHover: true,
+        autoplaySpeed: 6000,
+        infinite: true,
+        speed: 400,
+        cssEase: 'linear',
+        dots: false
+    };
+
     const movieId = props.match.params.id;
 
     const APIKey = 'ce30a4e46c4adcde72216d273f3f7ba0';
@@ -32,6 +51,36 @@ const MoreInfoForEachMoviePage = (props) => {
             );
         });
 
+        const eachPersonFromCast = staffMovie.cast.map((castPerson, index) => {
+            if(castPerson.profile_path !== null) {
+                return(
+                    <div className="movie-staff-container" key={index}>
+                        <img src={`${imageUrlApi}${castPerson.profile_path}`} className="movie-img-cast" />
+                        <p className="movie-name">{castPerson.name}</p>
+                        <p className="movie-role">{castPerson.character}</p>
+                    </div>  
+                );
+            } else {
+                return null;
+            };
+        });
+
+        const eachPersonFromCrew = staffMovie.crew.map((crewPerson, index) => {
+            if(crewPerson.profile_path !== null) {
+                return(
+                    <div className="movie-staff-container" key={index}>
+                        <img src={`${imageUrlApi}${crewPerson.profile_path}`} className="movie-img-cast" />
+                        <p className="movie-name">{crewPerson.name}</p>
+                        <p className="movie-job">{crewPerson.job}</p>
+                    </div>  
+                );
+            } else {
+                return null;
+            };
+        });
+
+        console.log(staffMovie.crew)
+
         return(
             <div className="more-info-page">
                 <HeaderComp/>
@@ -44,19 +93,41 @@ const MoreInfoForEachMoviePage = (props) => {
                             <h3>{primaryDataMovie.title}</h3>
                             
                             <div className="movie-buttons">
-                                <CircularProgressbar value={`${primaryDataMovie.vote_average * 10}`} text={`${primaryDataMovie.vote_average * 10}%`} className="movie-score" />
+                                <OverlayTrigger
+                                    placement='bottom'
+                                    overlay={<Tooltip id='tooltip-user-score'>User score</Tooltip>}
+                                >
+                                    <div className="movie-score-cnt">
+                                        <CircularProgressbar value={`${primaryDataMovie.vote_average * 10}`} text={`${primaryDataMovie.vote_average * 10}%`} className="movie-score" />
+                                    </div>
+                                </OverlayTrigger>
                                 
-                                <button className="movie-add-to-favorite">
-                                    <FontAwesomeIcon icon={faHeart} className="icons" />
-                                </button>
+                                <OverlayTrigger
+                                    placement='bottom'
+                                    overlay={<Tooltip id='tooltip-add-to-favorite'>Add to favorite </Tooltip>}
+                                >
+                                    <button className="movie-add-to-favorite">
+                                        <FontAwesomeIcon icon={faHeart} className="icons" />
+                                    </button>
+                                </OverlayTrigger>
 
-                                <button className="movie-play">
-                                    <FontAwesomeIcon icon={faPlay} className="icons" />
-                                </button>
+                                <OverlayTrigger
+                                    placement='bottom'
+                                    overlay={<Tooltip id='tooltip-watch-trailer'>Watch trailer</Tooltip>}
+                                >
+                                    <button className="movie-play">
+                                        <FontAwesomeIcon icon={faPlay} className="icons" />
+                                    </button>
+                                </OverlayTrigger>
 
-                                <button className="movie-homepage">
-                                    <FontAwesomeIcon icon={faLink} className="icons" />
-                                </button>
+                                <OverlayTrigger
+                                    placement='bottom'
+                                    overlay={<Tooltip>Go to official site</Tooltip>}
+                                >
+                                    <a href={primaryDataMovie.homepage} target="_blank" className="movie-homepage">
+                                        <FontAwesomeIcon icon={faLink} className="icons" />
+                                    </a>
+                                </OverlayTrigger>
                             </div>
 
                             <h4>Overview</h4>
@@ -118,11 +189,15 @@ const MoreInfoForEachMoviePage = (props) => {
                         </TabList>
 
                         <TabPanel>
-                            <h2>Any content 1</h2>
+                            <Slider {...sliderSettings} className="movie-cast-slider">
+                                {eachPersonFromCast}
+                            </Slider>
                         </TabPanel>
 
                         <TabPanel>
-                            <h2>Any content 2</h2>
+                            <Slider {...sliderSettings} className="movie-cast-slider">
+                                {eachPersonFromCrew}
+                            </Slider>
                         </TabPanel>
                     </Tabs>
                 </main>
