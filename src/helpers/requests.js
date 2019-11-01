@@ -60,3 +60,18 @@ export const useFetchKeywordsAboutMovie = (url) => {
 
     return (keywordsError === '') ? keywords : keywordsError;
 };
+
+export const useFetchSpecialPerson = (url) => {
+    const [data, setData] = useState('');
+
+    const [error, setError] = useState('');
+
+    useEffect(() => {
+        fetch(url)
+        .then(response => response.json())
+        .then(data => setData(data))
+        .catch(error => setError(error))
+    }, []);
+
+    return (error === '') ? data : error;
+}; 

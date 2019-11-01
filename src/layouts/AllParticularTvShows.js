@@ -29,7 +29,7 @@ const AllParticularTvShows = (props) => {
                             <span className="each-show-average">{show.vote_average}</span>
                         </div>
 
-                        <Link to={`/movie/${show.id}`} className="each-show-overlay-effect">
+                        <Link to={`/tv-show/${show.id}`} className="each-show-overlay-effect">
                             <FontAwesomeIcon icon={faPlusCircle} className="icons" />
                         </Link>
                     </div>

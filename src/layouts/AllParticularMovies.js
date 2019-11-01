@@ -9,8 +9,7 @@ import { Link } from "react-router-dom";
 const AllParticularMovies = (props) => {
 
     const imageUrlApi = 'http://image.tmdb.org/t/p/original';
-    console.log('tuk sme')
-    console.log(props.allMovies)
+   
         if(props.allMovies) {
             const eachMovie = props.allMovies.map((movie, index) => {
                 return(
