@@ -43,8 +43,24 @@
 
             &-right-side {
                 padding: 0px 30px;
+                display: flex;
+                flex-direction: column;
+
                 & > h3 {
                     text-align: center;
+                }
+            }
+
+            &-photos-flex {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-around;
+
+                img {
+                    margin-bottom: 10px;
+                    margin-right: 10px;
+                    width: 150px;
+                    height: 200px;
                 }
             }
         }

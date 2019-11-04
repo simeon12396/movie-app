@@ -1,17 +1,42 @@
-import React from 'react';
+import React, {useState} from 'react';
 import HeaderComp from '../components/HeaderComp.js';
 import '../scss/pages/SpecialPerson.scss';
 import {useFetchSpecialPerson} from '../helpers/requests.js';
+import Pagination from 'react-bootstrap/Pagination';
+import PageItem from 'react-bootstrap/PageItem';
 
 const SpecialPersonPage = (props) => {
     const apiKey = 'ce30a4e46c4adcde72216d273f3f7ba0';
     const personId = props.match.params.id;
     const imageUrlApi = 'http://image.tmdb.org/t/p/original';
-
     const fetchPersonInformation = useFetchSpecialPerson(`https://api.themoviedb.org/3/person/${personId}?api_key=${apiKey}&language=en-US`);
-    console.log(fetchPersonInformation);
+    const fetchPersonImages = useFetchSpecialPerson(`https://api.themoviedb.org/3/person/${personId}/images?api_key=${apiKey}`);
+    const [currentPage, setCurrentPage] = useState(1);
 
-    if(fetchPersonInformation) {
+    if(fetchPersonInformation && fetchPersonImages) {
+
+        const photosPerPage = 8;
+        const indexOfLastPhoto = currentPage * photosPerPage;
+        const indexOfFirstPhoto = indexOfLastPhoto - photosPerPage;
+        const currentPhotos = fetchPersonImages.profiles.slice(indexOfFirstPhoto, indexOfLastPhoto);
+        const arrOfPages = [];
+
+        const eachPhoto = currentPhotos.map((photo, index) => {
+            return(
+                <img src={`${imageUrlApi}${photo.file_path}`} key={index} />
+            );
+        });
+
+        for(let i = 1; i <= Math.round(fetchPersonImages.profiles.length / photosPerPage); i++) {
+            arrOfPages.push(i);
+        };
+        
+        const loopThroughPages = arrOfPages.map((page, index) => {
+            return(
+                <PageItem key={index} onClick={() => {setCurrentPage(page)}}>{page}</PageItem>
+            );
+        });
+
         const knownAs = fetchPersonInformation.also_known_as.map((nickname, index) => {
             return(
                 <span key={index} className="person-nickname">{nickname}</span>
@@ -21,7 +46,7 @@ const SpecialPersonPage = (props) => {
         const genderType = () => (fetchPersonInformation.gender === 2) ? (<span>Male</span>) : (<span>Female</span>);
 
         const hasDeathDay = () => (fetchPersonInformation.deathday === null) ? (<span>-</span>) : (<span>{fetchPersonInformation.deathday}</span>);
-
+        
         return(
             <div className="special-person-page">
                 <HeaderComp/>
@@ -67,6 +92,20 @@ const SpecialPersonPage = (props) => {
                         <div className="person-right-side">
                             <h3>{fetchPersonInformation.name}</h3>
                             <p>{fetchPersonInformation.biography}</p>
+
+                            <div className="person-photos">
+                                <h3>Photos</h3>
+
+                                <div className="person-photos-flex">
+                                    {eachPhoto}
+                                </div>
+                            </div>
+
+                            <div className="person-pagination mt-2">
+                                <Pagination className="flex justify-content-center">
+                                    {loopThroughPages}
+                                </Pagination>
+                            </div>
                         </div>
                     </div>
                 </main>
