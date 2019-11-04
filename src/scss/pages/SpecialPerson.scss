@@ -1,0 +1,52 @@
+.special-person-page {
+
+    main {
+        margin-left: 90px;
+        background-color: black;
+        color: white;
+
+        .person {
+            padding-top: 50px;
+            display: flex;
+
+            &-box {
+                margin-bottom: 5px;
+            }
+
+            &-left-side {
+                width: 300px;
+                display: flex;
+                flex-direction: column;
+
+                h3 {
+                    margin: 5px 0;
+                }
+            }
+
+            &-img {
+                width: 300px;
+                height: 450px;
+            }
+
+            &-nickname {
+                background-color: gray;
+                border-radius: 10px;
+                padding: 2px 5px;
+                margin-right: 5px;
+                margin-top: 5px;
+            }
+
+            &-nicknames-flex {
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+            &-right-side {
+                padding: 0px 30px;
+                & > h3 {
+                    text-align: center;
+                }
+            }
+        }
+    }
+}

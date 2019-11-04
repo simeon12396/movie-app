@@ -13,6 +13,7 @@ import Tooltip from 'react-bootstrap/Tooltip';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { Link } from "react-router-dom";
 
 const MoreInfoForEachMoviePage = (props) => {
 
@@ -43,21 +44,15 @@ const MoreInfoForEachMoviePage = (props) => {
     };
 
     const movieId = props.match.params.id;
-
     const APIKey = 'ce30a4e46c4adcde72216d273f3f7ba0';
-
     const primaryDataMovie = useFetchPrimaryDataAboutMovie(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${APIKey}&language=en-US`);
-
     const staffMovie = useFetchCastAndCrewAboutMovie(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${APIKey}`);
-
     const keywordsMovie = useFetchKeywordsAboutMovie(`https://api.themoviedb.org/3/movie/${movieId}/keywords?api_key=${APIKey}`)
-
     const imageUrlApi = 'http://image.tmdb.org/t/p/original';
-
-    console.log(staffMovie);
 
     if(primaryDataMovie && staffMovie && keywordsMovie) {
 
+        console.log(staffMovie)
         const eachKeyword = keywordsMovie.keywords.map((keyword, index) => {
             return(
                 <span key={index}>{keyword.name}</span>
@@ -68,7 +63,9 @@ const MoreInfoForEachMoviePage = (props) => {
             if(castPerson.profile_path !== null) {
                 return(
                     <div className="movie-staff-container" key={index}>
-                        <img src={`${imageUrlApi}${castPerson.profile_path}`} className="movie-img-cast" />
+                        <Link to={`/person/${castPerson.id}`}>
+                            <img src={`${imageUrlApi}${castPerson.profile_path}`} className="movie-img-cast" />
+                        </Link>
                         <p className="movie-name">{castPerson.name}</p>
                         <p className="movie-role">{castPerson.character}</p>
                     </div>  
@@ -82,7 +79,9 @@ const MoreInfoForEachMoviePage = (props) => {
             if(crewPerson.profile_path !== null) {
                 return(
                     <div className="movie-staff-container" key={index}>
-                        <img src={`${imageUrlApi}${crewPerson.profile_path}`} className="movie-img-cast" />
+                        <Link to={`/person/${crewPerson.id}`}>
+                            <img src={`${imageUrlApi}${crewPerson.profile_path}`} className="movie-img-cast" />
+                        </Link>
                         <p className="movie-name">{crewPerson.name}</p>
                         <p className="movie-job">{crewPerson.job}</p>
                     </div>  

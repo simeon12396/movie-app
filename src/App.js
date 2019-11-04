@@ -10,6 +10,7 @@ import AllTopRatedTvShowsPage from './pages/AllTopRatedTvShowsPage.js';
 import AllOnTheAirTvShowsPage from './pages/AllOnTheAirTvShowsPage.js';
 import MoreInfoForEachMoviePage from './pages/MoreInfoForEachMoviePage.js';
 import MoreInfoForEachTvShowPage from './pages/MoreInfoForEachTvShowPage.js';
+import SpecialPersonPage from './pages/SpecialPersonPage.js';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route path="/category/on-the-air-tv-shows" component={AllOnTheAirTvShowsPage} />
             <Route path="/movie/:id" component={MoreInfoForEachMoviePage} />
             <Route path="/tv-show/:id" component={MoreInfoForEachTvShowPage} />
+            <Route path="/person/:id" component={SpecialPersonPage} />
           </Switch>
         </Router>
     </div>

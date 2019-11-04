@@ -13,6 +13,7 @@ import Tooltip from 'react-bootstrap/Tooltip';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { Link } from "react-router-dom";
 
 const MoreInfoFromEachTvShowPage = (props) => {
     const sliderSettings = {
@@ -53,7 +54,9 @@ const MoreInfoFromEachTvShowPage = (props) => {
             if(castPerson.profile_path !== null) {
                 return(
                     <div className="tv-show-staff-container" key={index}>
-                        <img src={`${imageUrlApi}${castPerson.profile_path}`} className="tv-show-img-cast" />
+                        <Link to={`/person/${castPerson.id}`}>
+                            <img src={`${imageUrlApi}${castPerson.profile_path}`} className="tv-show-img-cast" />
+                        </Link>
                         <p className="tv-show-name">{castPerson.name}</p>
                         <p className="tv-show-role">{castPerson.character}</p>
                     </div>  
@@ -67,7 +70,9 @@ const MoreInfoFromEachTvShowPage = (props) => {
             if(crewPerson.profile_path !== null) {
                 return(
                     <div className="tv-show-staff-container" key={index}>
-                        <img src={`${imageUrlApi}${crewPerson.profile_path}`} className="tv-show-img-cast" />
+                        <Link to={`/person/${crewPerson.id}`}>
+                            <img src={`${imageUrlApi}${crewPerson.profile_path}`} className="tv-show-img-cast" />
+                        </Link>
                         <p className="tv-show-name">{crewPerson.name}</p>
                         <p className="tv-show-job">{crewPerson.job}</p>
                     </div>  
