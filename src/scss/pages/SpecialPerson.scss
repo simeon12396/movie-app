@@ -1,9 +1,9 @@
 .special-person-page {
-
     main {
         margin-left: 90px;
         background-color: black;
         color: white;
+        min-height: 100vh;
 
         .person {
             padding-top: 50px;
@@ -61,7 +61,44 @@
                     margin-right: 10px;
                     width: 150px;
                     height: 200px;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
                 }
+            }
+
+            &-cover-img,
+            &-close {
+                position: absolute;
+            }
+
+            &-cover-img {
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 30%;
+                opacity: 1;
+            }
+
+            &-cover-img-hide {
+                opacity: 0;
+                display: none;
+            }
+
+            &-close {
+                top: 4.5%;
+                left: 66%;
+                font-size: 25px;
+                opacity: 1;
+                
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+
+            &-close-hide {
+                opacity: 0;
             }
         }
     }

@@ -4,6 +4,8 @@ import '../scss/pages/SpecialPerson.scss';
 import {useFetchSpecialPerson} from '../helpers/requests.js';
 import Pagination from 'react-bootstrap/Pagination';
 import PageItem from 'react-bootstrap/PageItem';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faWindowClose } from "@fortawesome/free-solid-svg-icons";
 
 const SpecialPersonPage = (props) => {
     const apiKey = 'ce30a4e46c4adcde72216d273f3f7ba0';
@@ -12,6 +14,7 @@ const SpecialPersonPage = (props) => {
     const fetchPersonInformation = useFetchSpecialPerson(`https://api.themoviedb.org/3/person/${personId}?api_key=${apiKey}&language=en-US`);
     const fetchPersonImages = useFetchSpecialPerson(`https://api.themoviedb.org/3/person/${personId}/images?api_key=${apiKey}`);
     const [currentPage, setCurrentPage] = useState(1);
+    const [coveringImgUrl, setCoveringImgUrl] = useState('');
 
     if(fetchPersonInformation && fetchPersonImages) {
 
@@ -19,18 +22,47 @@ const SpecialPersonPage = (props) => {
         const indexOfLastPhoto = currentPage * photosPerPage;
         const indexOfFirstPhoto = indexOfLastPhoto - photosPerPage;
         const currentPhotos = fetchPersonImages.profiles.slice(indexOfFirstPhoto, indexOfLastPhoto);
+        
+        const handleCoverOverlayImage =  (e) => {
+            const imgIndex = e.target.getAttribute('img-url');
+            const currentCoveringImgUrl = `${imageUrlApi}${currentPhotos[imgIndex].file_path}`;
+            setCoveringImgUrl(currentCoveringImgUrl);
+
+            const setActiveCurrentCoverImg = document.querySelector('.person-img-overlay img');
+            setActiveCurrentCoverImg.classList.add('person-cover-img');
+            setActiveCurrentCoverImg.classList.remove('person-cover-img-hide')
+
+            const setActiveCloseCoverBtn = document.querySelector('.person-img-overlay svg');
+            setActiveCloseCoverBtn.classList.remove('person-close-hide');
+            setActiveCloseCoverBtn.classList.add('person-close');
+        };
+
+        const handleCloseOverlayImg = (e) => {
+            const hideActiveCloseCoverBtn = e.target;
+            hideActiveCloseCoverBtn.classList.remove('person-close');
+            hideActiveCloseCoverBtn.classList.add('person-close-hide');
+
+            const setActiveCurrentCoverImg = document.querySelector('.person-img-overlay img');
+            setActiveCurrentCoverImg.classList.remove('person-cover-img');
+            setActiveCurrentCoverImg.classList.add('person-cover-img-hide')
+        };
+
         const arrOfPages = [];
 
         const eachPhoto = currentPhotos.map((photo, index) => {
             return(
-                <img src={`${imageUrlApi}${photo.file_path}`} key={index} />
+                <img src={`${imageUrlApi}${photo.file_path}`} key={index} onClick={handleCoverOverlayImage} img-url={index}/>
             );
         });
 
-        for(let i = 1; i <= Math.round(fetchPersonImages.profiles.length / photosPerPage); i++) {
-            arrOfPages.push(i);
+        const pullingArrOfPages = () => {
+            for(let i = 1; i <= Math.round(fetchPersonImages.profiles.length / photosPerPage); i++) {
+                arrOfPages.push(i);
+            };
         };
-        
+
+        pullingArrOfPages();
+
         const loopThroughPages = arrOfPages.map((page, index) => {
             return(
                 <PageItem key={index} onClick={() => {setCurrentPage(page)}}>{page}</PageItem>
@@ -89,6 +121,7 @@ const SpecialPersonPage = (props) => {
                                 <span>{fetchPersonInformation.place_of_birth}</span>
                             </div>
                         </div>
+
                         <div className="person-right-side">
                             <h3>{fetchPersonInformation.name}</h3>
                             <p>{fetchPersonInformation.biography}</p>
@@ -105,6 +138,12 @@ const SpecialPersonPage = (props) => {
                                 <Pagination className="flex justify-content-center">
                                     {loopThroughPages}
                                 </Pagination>
+                            </div>
+
+                            <div className="person-img-overlay">
+                                <img src={coveringImgUrl}/>
+
+                                <FontAwesomeIcon icon={faWindowClose} className="icons" onClick={handleCloseOverlayImg}/>
                             </div>
                         </div>
                     </div>
