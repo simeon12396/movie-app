@@ -14,7 +14,9 @@ const SpecialPersonPage = (props) => {
     const fetchPersonInformation = useFetchSpecialPerson(`https://api.themoviedb.org/3/person/${personId}?api_key=${apiKey}&language=en-US`);
     const fetchPersonImages = useFetchSpecialPerson(`https://api.themoviedb.org/3/person/${personId}/images?api_key=${apiKey}`);
     const [currentPage, setCurrentPage] = useState(1);
-    const [coveringImgUrl, setCoveringImgUrl] = useState('');
+    const [overlayImgUrl, setOverlayImgUrl] = useState('');
+    const [closeBtn, setCloseBtn] = useState(false);
+    const [overlayImg, setOverlayImg] = useState(false);
 
     if(fetchPersonInformation && fetchPersonImages) {
 
@@ -25,26 +27,15 @@ const SpecialPersonPage = (props) => {
         
         const handleCoverOverlayImage =  (e) => {
             const imgIndex = e.target.getAttribute('img-url');
-            const currentCoveringImgUrl = `${imageUrlApi}${currentPhotos[imgIndex].file_path}`;
-            setCoveringImgUrl(currentCoveringImgUrl);
-
-            const setActiveCurrentCoverImg = document.querySelector('.person-img-overlay img');
-            setActiveCurrentCoverImg.classList.add('person-cover-img');
-            setActiveCurrentCoverImg.classList.remove('person-cover-img-hide')
-
-            const setActiveCloseCoverBtn = document.querySelector('.person-img-overlay svg');
-            setActiveCloseCoverBtn.classList.remove('person-close-hide');
-            setActiveCloseCoverBtn.classList.add('person-close');
+            const overlayImgUrl = `${imageUrlApi}${currentPhotos[imgIndex].file_path}`;
+            setOverlayImgUrl(overlayImgUrl);
+            setOverlayImg(true);
+            setCloseBtn(true);
         };
 
-        const handleCloseOverlayImg = (e) => {
-            const hideActiveCloseCoverBtn = e.target;
-            hideActiveCloseCoverBtn.classList.remove('person-close');
-            hideActiveCloseCoverBtn.classList.add('person-close-hide');
-
-            const setActiveCurrentCoverImg = document.querySelector('.person-img-overlay img');
-            setActiveCurrentCoverImg.classList.remove('person-cover-img');
-            setActiveCurrentCoverImg.classList.add('person-cover-img-hide')
+        const handleCloseOverlayImg = () => {
+            setOverlayImg(false);
+            setCloseBtn(false);
         };
 
         const arrOfPages = [];
@@ -141,9 +132,13 @@ const SpecialPersonPage = (props) => {
                             </div>
 
                             <div className="person-img-overlay">
-                                <img src={coveringImgUrl}/>
-
-                                <FontAwesomeIcon icon={faWindowClose} className="icons" onClick={handleCloseOverlayImg}/>
+                                {
+                                    (overlayImg && <img src={overlayImgUrl} className="person-overlay-img" />)
+                                }
+                                
+                               {
+                                    (closeBtn && <FontAwesomeIcon icon={faWindowClose} className="icons person-close" onClick={handleCloseOverlayImg}/>)
+                               }
                             </div>
                         </div>
                     </div>

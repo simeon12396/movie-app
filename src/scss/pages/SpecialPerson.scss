@@ -1,12 +1,14 @@
 .special-person-page {
     main {
         margin-left: 90px;
-        background-color: black;
+        background-color: #1d253c;
         color: white;
         min-height: 100vh;
 
         .person {
             padding-top: 50px;
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
 
             &-box {
@@ -15,8 +17,13 @@
 
             &-left-side {
                 width: 300px;
+                display: -webkit-box;
+                display: -ms-flexbox;
                 display: flex;
-                flex-direction: column;
+                -webkit-box-orient: vertical;
+                -webkit-box-direction: normal;
+                    -ms-flex-direction: column;
+                        flex-direction: column;
 
                 h3 {
                     margin: 5px 0;
@@ -26,6 +33,8 @@
             &-img {
                 width: 300px;
                 height: 450px;
+                -webkit-box-shadow: 10px 10px 10px -2px rgba(0,0,0,0.75);
+                box-shadow: 10px 10px 10px -2px rgba(0,0,0,0.75);
             }
 
             &-nickname {
@@ -37,14 +46,22 @@
             }
 
             &-nicknames-flex {
+                display: -webkit-box;
+                display: -ms-flexbox;
                 display: flex;
-                flex-wrap: wrap;
+                -ms-flex-wrap: wrap;
+                    flex-wrap: wrap;
             }
 
             &-right-side {
                 padding: 0px 30px;
+                display: -webkit-box;
+                display: -ms-flexbox;
                 display: flex;
-                flex-direction: column;
+                -webkit-box-orient: vertical;
+                -webkit-box-direction: normal;
+                    -ms-flex-direction: column;
+                        flex-direction: column;
 
                 & > h3 {
                     text-align: center;
@@ -52,9 +69,13 @@
             }
 
             &-photos-flex {
+                display: -webkit-box;
+                display: -ms-flexbox;
                 display: flex;
-                flex-wrap: wrap;
-                justify-content: space-around;
+                -ms-flex-wrap: wrap;
+                    flex-wrap: wrap;
+                -ms-flex-pack: distribute;
+                    justify-content: space-around;
 
                 img {
                     margin-bottom: 10px;
@@ -68,22 +89,18 @@
                 }
             }
 
-            &-cover-img,
+            &-overlay-img,
             &-close {
                 position: absolute;
             }
 
-            &-cover-img {
+            &-overlay-img {
                 top: 50%;
                 left: 50%;
-                transform: translate(-50%, -50%);
+                -webkit-transform: translate(-50%, -50%);
+                        transform: translate(-50%, -50%);
                 width: 30%;
                 opacity: 1;
-            }
-
-            &-cover-img-hide {
-                opacity: 0;
-                display: none;
             }
 
             &-close {
@@ -95,10 +112,6 @@
                 &:hover {
                     cursor: pointer;
                 }
-            }
-
-            &-close-hide {
-                opacity: 0;
             }
         }
     }

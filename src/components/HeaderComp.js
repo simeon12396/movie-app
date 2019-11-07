@@ -16,11 +16,6 @@ const HeaderComp = () => {
                     </li>
                     <li className="header-li">
                         <Link to="#">
-                            <FontAwesomeIcon icon={faSearch} className="icons" />
-                        </Link>
-                    </li>
-                    <li className="header-li">
-                        <Link to="#">
                             <FontAwesomeIcon icon={faUserPlus} className="icons" />
                         </Link>
                     </li>

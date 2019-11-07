@@ -11,12 +11,12 @@ import AllOnTheAirTvShowsPage from './pages/AllOnTheAirTvShowsPage.js';
 import MoreInfoForEachMoviePage from './pages/MoreInfoForEachMoviePage.js';
 import MoreInfoForEachTvShowPage from './pages/MoreInfoForEachTvShowPage.js';
 import SpecialPersonPage from './pages/SpecialPersonPage.js';
-
+ 
 function App() {
   return (
     <div className="App">
         <Router>
-          <Switch>
+          <Switch> 
             <Route exact path="/" component={HomePage} />
             <Route path="/category/now-playing-movies" component={AllNowPlayingMoviesPage} />
             <Route path="/category/top-rated-movies" component={AllTopRatedMoviesPage} />
