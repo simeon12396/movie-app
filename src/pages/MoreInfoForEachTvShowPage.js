@@ -4,7 +4,7 @@ import {useFetchPrimaryDataAboutMovie, useFetchCastAndCrewAboutMovie ,useFetchKe
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart, faPlay,faLink } from "@fortawesome/free-solid-svg-icons";
+import { faHeart, faPlay, faLink, faArrowUp } from "@fortawesome/free-solid-svg-icons";
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import '../scss/pages/MoreInfoForEachTvShowPage.scss';
@@ -14,6 +14,7 @@ import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Link } from "react-router-dom";
+import {useScrollEffect, handleScrollToTop} from '../helpers/methodsAndHooks.js';
 
 const MoreInfoFromEachTvShowPage = (props) => {
     const sliderSettings = {
@@ -40,6 +41,9 @@ const MoreInfoFromEachTvShowPage = (props) => {
     const keywordsTvShow = useFetchKeywordsAboutMovie(`https://api.themoviedb.org/3/tv/${tvShowId}/keywords?api_key=${APIKey}`)
 
     const imageUrlApi = 'http://image.tmdb.org/t/p/original';
+
+    useScrollEffect();
+    handleScrollToTop();
 
     console.log(primaryDataTvShow)
     if(primaryDataTvShow && staffTvShow && keywordsTvShow) {
@@ -195,6 +199,10 @@ const MoreInfoFromEachTvShowPage = (props) => {
                             </Slider>
                         </TabPanel>
                     </Tabs>
+
+                    <div className="scroll-to-top" onClick={handleScrollToTop}>
+                        <FontAwesomeIcon icon={faArrowUp} />
+                    </div>
                 </main>
             </div>
         );

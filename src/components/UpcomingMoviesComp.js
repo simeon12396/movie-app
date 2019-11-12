@@ -5,7 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 import '../scss/components/UpcomingMovies.scss';
 import StarRatingComponent from 'react-star-rating-component';
 import {useFetchDataFromTheMovieAPI as useFetchUpcomingMovies } from '../helpers/requests.js';
-import {sliceText} from '../helpers/methods.js';
+import {sliceText} from '../helpers/methodsAndHooks.js';
 import { Link } from "react-router-dom";
 
 const UpcomingMoviesComp = () => {

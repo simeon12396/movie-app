@@ -4,7 +4,7 @@ import {useFetchPrimaryDataAboutMovie, useFetchCastAndCrewAboutMovie ,useFetchKe
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart, faPlay,faLink } from "@fortawesome/free-solid-svg-icons";
+import { faHeart, faPlay, faLink, faArrowUp } from "@fortawesome/free-solid-svg-icons";
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import '../scss/pages/MoreInfoForEachMoviePage.scss';
@@ -14,6 +14,7 @@ import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Link } from "react-router-dom";
+import {useScrollEffect, handleScrollToTop} from '../helpers/methodsAndHooks.js';
 
 const MoreInfoForEachMoviePage = (props) => {
 
@@ -50,9 +51,11 @@ const MoreInfoForEachMoviePage = (props) => {
     const keywordsMovie = useFetchKeywordsAboutMovie(`https://api.themoviedb.org/3/movie/${movieId}/keywords?api_key=${APIKey}`)
     const imageUrlApi = 'http://image.tmdb.org/t/p/original';
 
+    useScrollEffect();
+    handleScrollToTop();
+
     if(primaryDataMovie && staffMovie && keywordsMovie) {
 
-        console.log(staffMovie)
         const eachKeyword = keywordsMovie.keywords.map((keyword, index) => {
             return(
                 <span key={index}>{keyword.name}</span>
@@ -210,6 +213,10 @@ const MoreInfoForEachMoviePage = (props) => {
                             </Slider>
                         </TabPanel>
                     </Tabs>
+
+                    <div className="scroll-to-top" onClick={handleScrollToTop}>
+                        <FontAwesomeIcon icon={faArrowUp} />
+                    </div>
                 </main>
             </div>
         );
