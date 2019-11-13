@@ -29,7 +29,7 @@ const ParticularMovies = (props) => {
             const eachMovie = props.movies.map((movie, index) => {
                 return(
                     <div className="each-movie" key={index}>
-                        <img src={`${imageUrlApi}${movie.poster_path}`} />
+                        <img src={`${imageUrlApi}${movie.poster_path}`} alt=""/>
     
                         <span className="each-movie-title">{movie.title}</span>
     

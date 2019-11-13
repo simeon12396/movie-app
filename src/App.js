@@ -11,7 +11,9 @@ import AllOnTheAirTvShowsPage from './pages/AllOnTheAirTvShowsPage.js';
 import MoreInfoForEachMoviePage from './pages/MoreInfoForEachMoviePage.js';
 import MoreInfoForEachTvShowPage from './pages/MoreInfoForEachTvShowPage.js';
 import SpecialPersonPage from './pages/SpecialPersonPage.js';
- 
+import RegisterPage from './pages/RegisterPage.js';
+import LoginPage from './pages/LoginPage.js';
+
 function App() {
   return (
     <div className="App">
@@ -27,6 +29,8 @@ function App() {
             <Route path="/movie/:id" component={MoreInfoForEachMoviePage} />
             <Route path="/tv-show/:id" component={MoreInfoForEachTvShowPage} />
             <Route path="/person/:id" component={SpecialPersonPage} />
+            <Route path="/register/" component={RegisterPage} />
+            <Route path="/login" component={LoginPage} />
           </Switch>
         </Router>
     </div>

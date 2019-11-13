@@ -4,7 +4,7 @@ import {useFetchPrimaryDataAboutMovie, useFetchCastAndCrewAboutMovie ,useFetchKe
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart, faPlay, faLink, faArrowUp } from "@fortawesome/free-solid-svg-icons";
+import { faHeart, faPlay, faLink } from "@fortawesome/free-solid-svg-icons";
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import '../scss/pages/MoreInfoForEachTvShowPage.scss';
@@ -14,7 +14,6 @@ import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Link } from "react-router-dom";
-import {useScrollEffect, handleScrollToTop} from '../helpers/methodsAndHooks.js';
 
 const MoreInfoFromEachTvShowPage = (props) => {
     const sliderSettings = {
@@ -42,10 +41,6 @@ const MoreInfoFromEachTvShowPage = (props) => {
 
     const imageUrlApi = 'http://image.tmdb.org/t/p/original';
 
-    useScrollEffect();
-    handleScrollToTop();
-
-    console.log(primaryDataTvShow)
     if(primaryDataTvShow && staffTvShow && keywordsTvShow) {
 
         const eachKeyword = keywordsTvShow.results.map((keyword, index) => {
@@ -59,7 +54,7 @@ const MoreInfoFromEachTvShowPage = (props) => {
                 return(
                     <div className="tv-show-staff-container" key={index}>
                         <Link to={`/person/${castPerson.id}`}>
-                            <img src={`${imageUrlApi}${castPerson.profile_path}`} className="tv-show-img-cast" />
+                            <img src={`${imageUrlApi}${castPerson.profile_path}`} className="tv-show-img-cast" alt="" />
                         </Link>
                         <p className="tv-show-name">{castPerson.name}</p>
                         <p className="tv-show-role">{castPerson.character}</p>
@@ -75,7 +70,7 @@ const MoreInfoFromEachTvShowPage = (props) => {
                 return(
                     <div className="tv-show-staff-container" key={index}>
                         <Link to={`/person/${crewPerson.id}`}>
-                            <img src={`${imageUrlApi}${crewPerson.profile_path}`} className="tv-show-img-cast" />
+                            <img src={`${imageUrlApi}${crewPerson.profile_path}`} className="tv-show-img-cast" alt="" />
                         </Link>
                         <p className="tv-show-name">{crewPerson.name}</p>
                         <p className="tv-show-job">{crewPerson.job}</p>
@@ -92,7 +87,7 @@ const MoreInfoFromEachTvShowPage = (props) => {
                 
                 <main>
                     <div className="tv-show container">
-                        <img src={`${imageUrlApi}${primaryDataTvShow.poster_path}`} className="tv-show-img" />
+                        <img src={`${imageUrlApi}${primaryDataTvShow.poster_path}`} className="tv-show-img" alt="" />
                         
                         <div className="tv-show-description">
                             <h3>{primaryDataTvShow.title}</h3>
@@ -129,7 +124,7 @@ const MoreInfoFromEachTvShowPage = (props) => {
                                     placement='bottom'
                                     overlay={<Tooltip>Go to official site</Tooltip>}
                                 >
-                                    <a href={primaryDataTvShow.homepage} target="_blank" className="tv-show-homepage">
+                                    <a href={primaryDataTvShow.homepage} target="_blank" className="tv-show-homepage" rel="noopener noreferrer">
                                         <FontAwesomeIcon icon={faLink} className="icons" />
                                     </a>
                                 </OverlayTrigger>
@@ -199,10 +194,6 @@ const MoreInfoFromEachTvShowPage = (props) => {
                             </Slider>
                         </TabPanel>
                     </Tabs>
-
-                    <div className="scroll-to-top" onClick={handleScrollToTop}>
-                        <FontAwesomeIcon icon={faArrowUp} />
-                    </div>
                 </main>
             </div>
         );

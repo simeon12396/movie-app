@@ -28,7 +28,7 @@ const ParticularTvShows = (props) => {
         const eachTvShow = props.tvShows.map((show, index) => {
             return(
                 <div className="each-tv-show" key={index}>
-                    <img src={`${imageUrlApi}${show.poster_path}`} />
+                    <img src={`${imageUrlApi}${show.poster_path}`} alt="" />
 
                     <span className="each-tv-show-title">{show.original_name}</span>
 

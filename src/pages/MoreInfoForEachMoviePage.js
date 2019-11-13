@@ -4,7 +4,7 @@ import {useFetchPrimaryDataAboutMovie, useFetchCastAndCrewAboutMovie ,useFetchKe
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart, faPlay, faLink, faArrowUp } from "@fortawesome/free-solid-svg-icons";
+import { faHeart, faPlay, faLink } from "@fortawesome/free-solid-svg-icons";
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import '../scss/pages/MoreInfoForEachMoviePage.scss';
@@ -14,7 +14,6 @@ import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Link } from "react-router-dom";
-import {useScrollEffect, handleScrollToTop} from '../helpers/methodsAndHooks.js';
 
 const MoreInfoForEachMoviePage = (props) => {
 
@@ -51,9 +50,6 @@ const MoreInfoForEachMoviePage = (props) => {
     const keywordsMovie = useFetchKeywordsAboutMovie(`https://api.themoviedb.org/3/movie/${movieId}/keywords?api_key=${APIKey}`)
     const imageUrlApi = 'http://image.tmdb.org/t/p/original';
 
-    useScrollEffect();
-    handleScrollToTop();
-
     if(primaryDataMovie && staffMovie && keywordsMovie) {
 
         const eachKeyword = keywordsMovie.keywords.map((keyword, index) => {
@@ -67,7 +63,7 @@ const MoreInfoForEachMoviePage = (props) => {
                 return(
                     <div className="movie-staff-container" key={index}>
                         <Link to={`/person/${castPerson.id}`}>
-                            <img src={`${imageUrlApi}${castPerson.profile_path}`} className="movie-img-cast" />
+                            <img src={`${imageUrlApi}${castPerson.profile_path}`} className="movie-img-cast" alt="" />
                         </Link>
                         <p className="movie-name">{castPerson.name}</p>
                         <p className="movie-role">{castPerson.character}</p>
@@ -83,7 +79,7 @@ const MoreInfoForEachMoviePage = (props) => {
                 return(
                     <div className="movie-staff-container" key={index}>
                         <Link to={`/person/${crewPerson.id}`}>
-                            <img src={`${imageUrlApi}${crewPerson.profile_path}`} className="movie-img-cast" />
+                            <img src={`${imageUrlApi}${crewPerson.profile_path}`} className="movie-img-cast" alt="" />
                         </Link>
                         <p className="movie-name">{crewPerson.name}</p>
                         <p className="movie-job">{crewPerson.job}</p>
@@ -100,7 +96,7 @@ const MoreInfoForEachMoviePage = (props) => {
                 
                 <main>
                     <div className="movie container">
-                        <img src={`${imageUrlApi}${primaryDataMovie.poster_path}`} className="movie-img" />
+                        <img src={`${imageUrlApi}${primaryDataMovie.poster_path}`} className="movie-img" alt="" />
                         
                         <div className="movie-description">
                             <h3>{primaryDataMovie.title}</h3>
@@ -137,7 +133,7 @@ const MoreInfoForEachMoviePage = (props) => {
                                     placement='bottom'
                                     overlay={<Tooltip>Go to official site</Tooltip>}
                                 >
-                                    <a href={primaryDataMovie.homepage} target="_blank" className="movie-homepage">
+                                    <a href={primaryDataMovie.homepage} target="_blank" className="movie-homepage" rel="noopener noreferrer">
                                         <FontAwesomeIcon icon={faLink} className="icons" />
                                     </a>
                                 </OverlayTrigger>
@@ -213,10 +209,6 @@ const MoreInfoForEachMoviePage = (props) => {
                             </Slider>
                         </TabPanel>
                     </Tabs>
-
-                    <div className="scroll-to-top" onClick={handleScrollToTop}>
-                        <FontAwesomeIcon icon={faArrowUp} />
-                    </div>
                 </main>
             </div>
         );

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import '../scss/pages/HomePage.scss';
 import HeaderComp from '../components/HeaderComp.js';
 import UpcomingMoviesComp from '../components/UpcomingMoviesComp.js';
@@ -8,13 +8,9 @@ import TopRatedMoviesComp from '../components/TopRatedMoviesComp.js';
 import PopularTvShowsComp from '../components/PopularTvShowsComp.js'
 import TopRatedTvShowsComp from '../components/TopRatedTvShowsComp.js';
 import OnTheAirTvShowsComp from '../components/OnTheAirTvShowsComp.js';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
-import {useScrollEffect, handleScrollToTop} from '../helpers/methodsAndHooks.js';
+import ScrollUpButton from "react-scroll-up-button";
 
 const HomePage = () => {
-    useScrollEffect();
-    handleScrollToTop();
 
     return(
         <div className='home-page'>
@@ -31,11 +27,9 @@ const HomePage = () => {
                     <TopRatedTvShowsComp/>
                     <OnTheAirTvShowsComp/>
                 </div>
-
-                <div className="scroll-to-top" onClick={handleScrollToTop}>
-                    <FontAwesomeIcon icon={faArrowUp} />
-                </div>
             </main>
+
+            <ScrollUpButton />
         </div>
     );
 };

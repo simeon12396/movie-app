@@ -6,10 +6,6 @@
     background-color: #1d253c;
     justify-content: space-around;
 
-    &.main-scroll {
-        margin-left: 58px;
-    }
-    
     .each-show {
         position: relative;
         flex: 0 1 10%;
@@ -71,42 +67,6 @@
             font-size: 40px;
             opacity: 0;
             background-color: transparent;
-        }
-    }
-}
-
-.scroll-to-top {
-    position: fixed;
-    right: 20px;
-    bottom: 20px;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: white;
-    color: #1d253c;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transition: all .5s ease-in-out;
-
-    &:hover {
-        cursor: pointer;
-    }
-
-    &.active-scroll {
-        opacity: 1;
-    }
-}
-
-.header-comp {
-
-    .header {
-        padding: 2rem 2rem 0;
-
-        &.header-scroll {
-        transition: all .5s ease-in-out;
-        padding: 2rem 1rem 0;
         }
     }
 }

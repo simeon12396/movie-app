@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import '../scss/components/AllParticularMovies.scss';
 import { Link } from "react-router-dom";
+import ScrollUpButton from "react-scroll-up-button";
 
 const AllParticularMovies = (props) => {
 
@@ -14,7 +15,7 @@ const AllParticularMovies = (props) => {
             const eachMovie = props.allMovies.map((movie, index) => {
                 return(
                     <div className="each-movie" key={index}>
-                        <img src={`${imageUrlApi}${movie.poster_path}`} />
+                        <img src={`${imageUrlApi}${movie.poster_path}`} alt=""/>
     
                         <span className="each-movie-title">{movie.title}</span>
     
@@ -32,6 +33,8 @@ const AllParticularMovies = (props) => {
                         <Link to={`/movie/${movie.id}`} className="each-movie-overlay-effect">
                             <FontAwesomeIcon icon={faPlusCircle} className="icons" />
                         </Link>
+
+                        <ScrollUpButton/>
                     </div>
                 );
             });

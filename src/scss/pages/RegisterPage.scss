@@ -1,0 +1,115 @@
+.register-page-container {
+    background-color: #1d253c;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .register {
+        border: 1px solid white;
+        display: flex;
+
+        &-label {
+            color: white;
+            margin-bottom: 0;
+            margin-top: 10px;
+        }
+
+        &-input {
+            border: none;
+            outline: none;
+            padding: 3px 10px;
+            transition: all .1s linear;
+            background-color: transparent;
+            border-left: 1px solid transparent;
+            border-right: 1px solid transparent;
+            border-top: 1px solid transparent;
+            border-bottom: 1px solid white;
+            transition: all .3s linear;
+            width: 90%;
+
+            &:focus {
+                border: 1px solid white;
+                border-radius: 5px;
+                padding: 3px 14px;
+                color: white;
+            }
+        }
+
+        &-img {
+            max-width: 350px;
+            height: 600px;
+            background-size: cover;
+            filter: blur(.5px);
+            -webkit-filter: blur(.5px);
+        }
+
+        &-form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            max-width: 300px;
+            width:  300px;
+            padding: 10px 20px 0;
+        }
+
+        &-checkbox-couple {
+            margin-top: 25px;
+            display: flex;
+            align-items: flex-start;
+
+            a {
+                text-decoration: none;
+                color: gray;
+            }
+
+            label {
+                margin: 0 0 0 10px;
+            }
+
+            input {
+                margin-top: 5px;
+            }
+        }
+
+        &-submit-couple {
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100px;
+
+            button,
+            .register-log-in {
+                border: none;
+                padding: 4px 20px;
+                border-radius: 20px;
+                background-color: gray;
+                color: white;
+                transition: all .3s linear;
+
+                &:hover {
+                    background-color: white;
+                    color: gray;
+                }
+
+                &:hover a {
+                    color: gray;
+                    text-decoration: none;
+                }
+            }
+
+            button {
+                margin-right: 20px;
+            }
+
+            .register-log-in {
+                margin-left: 20px;
+
+                a {
+                    color: white;
+                }
+            }
+        }
+    }
+}

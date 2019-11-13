@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import '../scss/components/AllParticularTvShows.scss';
 import { Link } from "react-router-dom";
+import ScrollUpButton from "react-scroll-up-button";
 
 const AllParticularTvShows = (props) => {
 
@@ -14,7 +15,7 @@ const AllParticularTvShows = (props) => {
             const eachTvShow = props.allTvShows.map((show, index) => {
                 return(
                     <div className="each-show" key={index}>
-                        <img src={`${imageUrlApi}${show.poster_path}`} />
+                        <img src={`${imageUrlApi}${show.poster_path}`} alt="" />
     
                         <span className="each-show-title">{show.original_name}</span>
     
@@ -32,6 +33,8 @@ const AllParticularTvShows = (props) => {
                         <Link to={`/tv-show/${show.id}`} className="each-show-overlay-effect">
                             <FontAwesomeIcon icon={faPlusCircle} className="icons" />
                         </Link>
+
+                        <ScrollUpButton/>
                     </div>
                 );
             });

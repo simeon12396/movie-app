@@ -6,6 +6,7 @@ import Pagination from 'react-bootstrap/Pagination';
 import PageItem from 'react-bootstrap/PageItem';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWindowClose } from "@fortawesome/free-solid-svg-icons";
+import ScrollUpButton from "react-scroll-up-button";
 
 const SpecialPersonPage = (props) => {
     const apiKey = 'ce30a4e46c4adcde72216d273f3f7ba0';
@@ -42,7 +43,7 @@ const SpecialPersonPage = (props) => {
 
         const eachPhoto = currentPhotos.map((photo, index) => {
             return(
-                <img src={`${imageUrlApi}${photo.file_path}`} key={index} onClick={handleCoverOverlayImage} img-url={index}/>
+                <img src={`${imageUrlApi}${photo.file_path}`} key={index} onClick={handleCoverOverlayImage} img-url={index} alt=""/>
             );
         });
 
@@ -73,10 +74,11 @@ const SpecialPersonPage = (props) => {
         return(
             <div className="special-person-page">
                 <HeaderComp/>
+
                 <main>
                     <div className="person container">
                         <div className="person-left-side">
-                            <img src={`${imageUrlApi}${fetchPersonInformation.profile_path}`} className="person-img" />
+                            <img src={`${imageUrlApi}${fetchPersonInformation.profile_path}`} className="person-img" alt="" />
 
                             <h3>Personal Info</h3>
 
@@ -133,7 +135,7 @@ const SpecialPersonPage = (props) => {
 
                             <div className="person-img-overlay">
                                 {
-                                    (overlayImg && <img src={overlayImgUrl} className="person-overlay-img" />)
+                                    (overlayImg && <img src={overlayImgUrl} className="person-overlay-img" alt="" />)
                                 }
                                 
                                {
@@ -143,6 +145,8 @@ const SpecialPersonPage = (props) => {
                         </div>
                     </div>
                 </main>
+
+                <ScrollUpButton/>
             </div>
         )
     } else {

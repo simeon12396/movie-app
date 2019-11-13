@@ -59,7 +59,7 @@ const UpcomingMoviesComp = () => {
                             <button className="btn btn-primary slider-btn">Watch trailer</button>
                         </div>
     
-                        <img src={`${imageUrlApi}${movie.backdrop_path}`} className="slide-img" />
+                        <img src={`${imageUrlApi}${movie.backdrop_path}`} className="slide-img" alt="" />
                     </div>
                 </div>
             );

@@ -1,18 +1,6 @@
 @import '../base/_typography.scss';
 
-html {
-    scroll-behavior: smooth;
-}
-
 .home-page {
-
-    .header-comp {
-
-        .header.header-scroll {
-            transition: all .5s ease-in-out;
-            padding: 2rem 1rem 0;
-        }
-    }
 
     main {
         margin-left: 90px;
@@ -20,36 +8,5 @@ html {
         overflow: hidden;
         position: relative;
         transition: all .5s ease-in-out;
-
-        &.main-scroll {
-            margin-left: 58px;
-        }
-        .out-focus {
-            margin: 20px;
-        }
-
-        .scroll-to-top {
-            position: fixed;
-            right: 20px;
-            bottom: 20px;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: white;
-            color: #1d253c;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: all .5s ease-in-out;
-
-            &:hover {
-                cursor: pointer;
-            }
-
-            &.active-scroll {
-                opacity: 1;
-            }
-        }
     }
 }
