@@ -11,14 +11,13 @@ const LoginPage = () => {
     const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers'));
     
     const onSubmit = (data) => {
-        registeredUsers.forEach((user, key) => {
-            if((user.username === data.username) && (user.password === data.password)) {
-                localStorage.setItem('authenticatedUsers', JSON.stringify(user));
-                alert('Congratulations! You are logged in!')
-            } else {
-                alert("Account doesn't exist!")
-            }
-        });
+        if((registeredUsers.username === data.username) && (registeredUsers.password === data.password)) {
+            localStorage.setItem('authenticatedUsers', JSON.stringify(data));
+            localStorage.setItem('isAuthenticated', true);
+            alert('Congratulations! You are logged in!')
+         } else {
+            alert("Account doesn't exist!")
+        }
     };
 
     return(        

@@ -7,16 +7,7 @@ import useForm from 'react-hook-form';
 const RegisterPage = () => {
 
     const {register, handleSubmit, errors} = useForm();
-    const [registeredUsers, setRegisteredUsers] = useState([]);
     const [emptyRegisteredUsers, setEmptyRegisteredUsers] = useState(false);
-
-    const pushRegUsersToLocalStorage = (data) => {
-        alert('Congratulations!');
-        const registeredCopyUsers = [...registeredUsers];
-        registeredCopyUsers.push(data);
-        setRegisteredUsers(registeredCopyUsers);
-        localStorage.setItem('registeredUsers', JSON.stringify(registeredCopyUsers));
-    };
 
     const onSubmit = data => {
         const password = data.password;
@@ -24,9 +15,10 @@ const RegisterPage = () => {
 
         if(password === confirmPassword) {
             if(emptyRegisteredUsers) {
-                pushRegUsersToLocalStorage(data)
+                localStorage.setItem('registeredUsers', JSON.stringify(data));
+                alert('Your account have been created!')
             } else {
-                pushRegUsersToLocalStorage(data);
+                localStorage.setItem('registeredUsers', JSON.stringify(data));
                 setEmptyRegisteredUsers(true); 
             }
         } else {
