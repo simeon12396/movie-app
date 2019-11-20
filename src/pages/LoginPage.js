@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import HeaderComp from '../components/HeaderComp.js'
 import '../scss/pages/LoginPage.scss';
 import loginImage from '../images/user-image.png';
@@ -6,11 +6,21 @@ import { Link } from "react-router-dom";
 import useForm from 'react-hook-form';
 
 const LoginPage = () => {
-    const {register, handleSubmit, errors} = useForm();
 
+    const {register, handleSubmit, errors} = useForm();
+    const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers'));
+    
     const onSubmit = (data) => {
-        console.log(data)
-    }
+        registeredUsers.forEach((user, key) => {
+            if((user.username === data.username) && (user.password === data.password)) {
+                localStorage.setItem('authenticatedUsers', JSON.stringify(user));
+                alert('Congratulations! You are logged in!')
+            } else {
+                alert("Account doesn't exist!")
+            }
+        });
+    };
+
     return(        
         <div className="login-page-container">
             <HeaderComp/>
@@ -35,7 +45,7 @@ const LoginPage = () => {
                         <button type="submit" className="login-btn">Login</button>
 
                         <div className="create-acc">
-                            <span>New user?</span>
+                            <span>Don't have an account?</span>
                             <Link to="/register">Create account</Link>
                         </div>
                     </form>

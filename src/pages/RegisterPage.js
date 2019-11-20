@@ -1,20 +1,34 @@
-import React from 'react';
+import React, {useState} from 'react';
 import HeaderComp from '../components/HeaderComp.js';
 import '../scss/pages/RegisterPage.scss';
 import { Link } from "react-router-dom";
 import useForm from 'react-hook-form';
 
-const RegisterPage = (props) => {
+const RegisterPage = () => {
 
     const {register, handleSubmit, errors} = useForm();
+    const [registeredUsers, setRegisteredUsers] = useState([]);
+    const [emptyRegisteredUsers, setEmptyRegisteredUsers] = useState(false);
+
+    const pushRegUsersToLocalStorage = (data) => {
+        alert('Congratulations!');
+        const registeredCopyUsers = [...registeredUsers];
+        registeredCopyUsers.push(data);
+        setRegisteredUsers(registeredCopyUsers);
+        localStorage.setItem('registeredUsers', JSON.stringify(registeredCopyUsers));
+    };
 
     const onSubmit = data => {
         const password = data.password;
         const confirmPassword = data.confirmPassword;
 
         if(password === confirmPassword) {
-            alert('Congratulations!');
-            props.history.push('/login');
+            if(emptyRegisteredUsers) {
+                pushRegUsersToLocalStorage(data)
+            } else {
+                pushRegUsersToLocalStorage(data);
+                setEmptyRegisteredUsers(true); 
+            }
         } else {
             alert('The form must be filled correctly!');
         };
@@ -79,7 +93,7 @@ const RegisterPage = (props) => {
                             </label>
                         </div>
 
-                        {(errors.terms && errors.password.type === 'terms') && <p>This is required</p>}
+                        {(errors.terms && errors.terms.type === 'required') && <p>This is required</p>}
 
                         <div className="register-submit-couple">
                             <button type="submit" className="register-submit">Register</button>
