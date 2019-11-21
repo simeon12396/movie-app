@@ -13,6 +13,7 @@ import MoreInfoForEachTvShowPage from './pages/MoreInfoForEachTvShowPage.js';
 import SpecialPersonPage from './pages/SpecialPersonPage.js';
 import RegisterPage from './pages/RegisterPage.js';
 import LoginPage from './pages/LoginPage.js';
+import FavoritePage from './pages/FavoritePage.js';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
             <Route path="/person/:id" component={SpecialPersonPage} />
             <Route path="/register/" component={RegisterPage} />
             <Route path="/login" component={LoginPage} />
+            <Route path="/user/favorite" component={FavoritePage} />
           </Switch>
         </Router>
     </div>

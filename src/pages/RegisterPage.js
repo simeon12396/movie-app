@@ -4,7 +4,7 @@ import '../scss/pages/RegisterPage.scss';
 import { Link } from "react-router-dom";
 import useForm from 'react-hook-form';
 
-const RegisterPage = () => {
+const RegisterPage = (props) => {
 
     const {register, handleSubmit, errors} = useForm();
     const [emptyRegisteredUsers, setEmptyRegisteredUsers] = useState(false);
@@ -17,6 +17,7 @@ const RegisterPage = () => {
             if(emptyRegisteredUsers) {
                 localStorage.setItem('registeredUsers', JSON.stringify(data));
                 alert('Your account have been created!')
+                setTimeout(props.history.push('/login'), 2000);
             } else {
                 localStorage.setItem('registeredUsers', JSON.stringify(data));
                 setEmptyRegisteredUsers(true); 

@@ -49,6 +49,15 @@ const MoreInfoForEachMoviePage = (props) => {
     const staffMovie = useFetchCastAndCrewAboutMovie(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${APIKey}`);
     const keywordsMovie = useFetchKeywordsAboutMovie(`https://api.themoviedb.org/3/movie/${movieId}/keywords?api_key=${APIKey}`)
     const imageUrlApi = 'http://image.tmdb.org/t/p/original';
+    let favoriteArray = [];
+
+    const handleAddToFavorite = () => {
+        let movieData = {...primaryDataMovie, imgURL: imageUrlApi };
+        const getLatestFavoriteItems = JSON.parse(localStorage.getItem('favorite'));
+        favoriteArray = [...getLatestFavoriteItems];
+        favoriteArray.push(movieData);
+        localStorage.setItem('favorite', JSON.stringify(favoriteArray))
+    };
 
     if(primaryDataMovie && staffMovie && keywordsMovie) {
 
@@ -115,7 +124,7 @@ const MoreInfoForEachMoviePage = (props) => {
                                     placement='bottom'
                                     overlay={<Tooltip id='tooltip-add-to-favorite'>Add to favorite </Tooltip>}
                                 >
-                                    <button className="movie-add-to-favorite">
+                                    <button className="movie-add-to-favorite" onClick={handleAddToFavorite}>
                                         <FontAwesomeIcon icon={faHeart} className="icons" />
                                     </button>
                                 </OverlayTrigger>

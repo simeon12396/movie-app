@@ -1,3 +1,15 @@
+%primaryGradient {
+    background: -webkit-linear-gradient(#f58608, #ef4d23);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+}
+
+%secondaryGradient {
+    background: -webkit-linear-gradient(#ef4d23, #f58608);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+}
+
 .register-page-container {
     background-color: #1d253c;
     min-height: 100vh;
@@ -10,8 +22,7 @@
         display: flex;
 
         &-heading {
-            color: gray;
-            opacity: .8;
+            @extend %primaryGradient;
         }
 
         &-label {
@@ -78,7 +89,13 @@
 
             a {
                 text-decoration: none;
-                color: gray;
+                @extend %primaryGradient;
+                font-weight: 600;
+                transition: all .3s linear;  
+
+                &:hover {
+                    @extend %secondaryGradient;
+                }
             }
 
             label {
@@ -102,17 +119,15 @@
                 border: none;
                 padding: 4px 20px;
                 border-radius: 20px;
-                background-color: gray;
+                background: linear-gradient(#ef4d23, #f58608);
                 color: white;
                 transition: all .3s linear;
 
                 &:hover {
-                    background-color: white;
-                    color: gray;
+                    background: linear-gradient(#f58608, #ef4d23);
                 }
 
                 &:hover a {
-                    color: gray;
                     text-decoration: none;
                 }
             }

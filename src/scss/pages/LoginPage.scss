@@ -1,3 +1,15 @@
+%primaryGradient {
+    background: -webkit-linear-gradient(#f58608, #ef4d23);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+}
+
+%secondaryGradient {
+    background: -webkit-linear-gradient(#ef4d23, #f58608);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+}
+
 .login-page-container {
     min-height: 100vh;
     background-color: #1d253c;
@@ -44,6 +56,7 @@
 
             &-label {
                 align-self: flex-start;
+                
             }
 
             &-input {
@@ -71,32 +84,26 @@
             &-btn {
                 margin-top: 10px;
                 width: 100px;
+                
             }
 
             &-heading {
                 margin-top: 3.5rem;
-                color: gray;
-                opacity: .8;
+                @extend %primaryGradient;
             }
 
             &-btn {
                 border: none;
                 padding: 4px 20px;
                 border-radius: 20px;
-                background-color: gray;
+                background: linear-gradient(#f58608, #ef4d23);
                 color: white;
                 transition: all .3s linear;
                 margin-left: auto;
                 margin-right: auto;
 
                 &:hover {
-                    background-color: white;
-                    color: gray;
-                }
-
-                &:hover a {
-                    color: gray;
-                    text-decoration: none;
+                   background: linear-gradient(#ef4d23, #f58608);
                 }
             }
 
@@ -106,8 +113,13 @@
                 justify-content: space-between;
                 
                 a {
-                    color: #ef4d23;
-                    font-size: 15px;
+                    @extend %primaryGradient;
+                    font-size: 17px;
+                    font-weight: 600;
+
+                    &:hover {
+                        @extend %secondaryGradient;
+                    }
                 }
             }
         }

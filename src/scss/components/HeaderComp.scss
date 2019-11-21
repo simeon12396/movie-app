@@ -72,6 +72,14 @@
                 background: linear-gradient(#ef4d23, #f58608);
             }
         }
+
+        &-li--favorite {
+            display: none;
+
+            &-active {
+                display: flex;
+            }
+        }
     }
 }
 

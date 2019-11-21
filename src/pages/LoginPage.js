@@ -5,7 +5,7 @@ import loginImage from '../images/user-image.png';
 import { Link } from "react-router-dom";
 import useForm from 'react-hook-form';
 
-const LoginPage = () => {
+const LoginPage = (props) => {
 
     const {register, handleSubmit, errors} = useForm();
     const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers'));
@@ -14,7 +14,9 @@ const LoginPage = () => {
         if((registeredUsers.username === data.username) && (registeredUsers.password === data.password)) {
             localStorage.setItem('authenticatedUsers', JSON.stringify(data));
             localStorage.setItem('isAuthenticated', true);
+            localStorage.setItem('favorite', JSON.stringify([]));
             alert('Congratulations! You are logged in!')
+            setTimeout(props.history.push('/'), 2000);
          } else {
             alert("Account doesn't exist!")
         }

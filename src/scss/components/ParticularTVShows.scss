@@ -13,8 +13,12 @@
     &-slider {
         color: white;
         margin-top: 10px;
-        padding-left: 20px;
+        padding-left: 40px;
 
+        .slick-prev {
+            margin-left: 15px;
+        }
+        
         .each-tv-show {
             height: 330px;
             position: relative;

@@ -1,7 +1,7 @@
 import React from 'react';
 import '../scss/components/HeaderComp.scss';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHome, faUserPlus, faSignInAlt, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
+import { faHome, faUserPlus, faSignInAlt, faSignOutAlt, faHeart } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 const HeaderComp = () => {
@@ -17,8 +17,15 @@ const HeaderComp = () => {
 
     const handleLogout = () => {
         localStorage.removeItem('isAuthenticated');
+        localStorage.removeItem('authenticatedUsers');
+        localStorage.removeItem('favoriteList');
     };
-    console.log(isAuthenticated)
+
+    const handleFavoriteListItem = () => {
+        const favoriteListItem = document.querySelector('.header-li--favorite');
+        favoriteListItem.classList.toggle('header-li--favorite-active')
+    };
+
     return (
         <div className="header-comp">
             <header className="header">
@@ -34,9 +41,16 @@ const HeaderComp = () => {
                         (isAuthenticated) ? 
                         (
                             <div>
-                                <li className="header-li header-li--profile">
+                                <li className="header-li header-li--profile" onClick={handleFavoriteListItem}>
                                     <span>{getFirstLetterFromUsername()}</span>
                                     <span className="header-tooltip">Profile</span>
+                                </li>
+
+                                <li className="header-li header-li--favorite">
+                                    <Link to="/user/favorite">
+                                        <FontAwesomeIcon icon={faHeart} className="icons" />
+                                        <span className="header-tooltip">Favorite</span>
+                                    </Link>
                                 </li>
 
                                 <li className="header-li">
