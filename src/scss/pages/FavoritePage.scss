@@ -27,11 +27,81 @@
 
         &-line {
             position: absolute;
-            width: 300px;
+            width: 15%;
             height: 1px;
             background: white;
             opacity: .8;
-            right: 42%;
+            right: 44%;
+            top: 90px;
+        }
+
+        &-item {
+            margin-bottom: 10px;
+            display: flex;
+            
+        }
+
+        &-img {
+            width: 200px;
+            height: 300px;
+            flex: 0 1 20%;
+        }
+
+        &-score {
+            width: 50px;
+        }
+
+        &-right-side {
+            margin-top: 10px;
+            margin-left: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-around;
+        }
+
+        &-title,
+        &-release-date {
+            margin-top: 10px;
+            margin-left: 10px;
+        }
+
+        &-inline-items {
+            width: 100%;
+            display: flex;
+        }
+
+        &-buttons {
+            display: flex;
+            
+            & > * {
+                margin-right: 10px;
+            }
+        }
+
+        &-remove-item,
+        &-homepage {
+            border: 1px solid gray;
+            outline: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: transparent;
+            transition: all .2s ease;
+            color: white;
+                
+            &:hover {
+                background-color: white;
+                border: 1px solid white;
+                color: #005cbf !important;
+                cursor: pointer;
+            }
+        }
+
+        &-homepage {
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
     }
 }
