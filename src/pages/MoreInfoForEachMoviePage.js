@@ -44,11 +44,17 @@ const MoreInfoForEachMoviePage = (props) => {
     };
 
     const movieId = props.match.params.id;
+
     const APIKey = 'ce30a4e46c4adcde72216d273f3f7ba0';
+
     const primaryDataMovie = useFetchPrimaryDataAboutMovie(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${APIKey}&language=en-US`);
+    
     const staffMovie = useFetchCastAndCrewAboutMovie(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${APIKey}`);
+    
     const keywordsMovie = useFetchKeywordsAboutMovie(`https://api.themoviedb.org/3/movie/${movieId}/keywords?api_key=${APIKey}`)
+    
     const imageUrlApi = 'http://image.tmdb.org/t/p/original';
+    
     let favoriteArray = [];
 
     const handleAddToFavorite = () => {

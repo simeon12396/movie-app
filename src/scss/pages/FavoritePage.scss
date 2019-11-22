@@ -37,6 +37,8 @@
 
         &-item {
             margin-bottom: 10px;
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
             
         }
@@ -44,7 +46,16 @@
         &-img {
             width: 200px;
             height: 300px;
-            flex: 0 1 20%;
+            -webkit-box-flex: 0;
+                -ms-flex: 0 1 20%;
+                    flex: 0 1 20%;
+            transition: all .2s linear;
+            
+            &:hover {
+                cursor: pointer;
+                -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+                        box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+            }
         }
 
         &-score {
@@ -54,10 +65,18 @@
         &-right-side {
             margin-top: 10px;
             margin-left: 30px;
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            justify-content: space-around;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+                -ms-flex-direction: column;
+                    flex-direction: column;
+            -webkit-box-align: start;
+                -ms-flex-align: start;
+                    align-items: flex-start;
+            -ms-flex-pack: distribute;
+                justify-content: space-around;
         }
 
         &-title,
@@ -68,10 +87,14 @@
 
         &-inline-items {
             width: 100%;
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
         }
 
         &-buttons {
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
             
             & > * {
@@ -87,6 +110,7 @@
             height: 50px;
             border-radius: 50%;
             background-color: transparent;
+            -webkit-transition: all .2s ease;
             transition: all .2s ease;
             color: white;
                 
@@ -99,9 +123,15 @@
         }
 
         &-homepage {
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
-            justify-content: center;
-            align-items: center;
+            -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                    justify-content: center;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
         }
     }
 }

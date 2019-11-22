@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import HeaderComp from '../components/HeaderComp.js';
 import '../scss/pages/FavoritePage.scss';
 import { CircularProgressbar } from 'react-circular-progressbar';
@@ -7,24 +7,27 @@ import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes, faLink } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 const FavoritePage = () => {
-    const getFavoriteFromLocalStorage = JSON.parse(localStorage.getItem('favorite'));
-    console.log(getFavoriteFromLocalStorage)
+    const [favorite, setFavorite] = useState(JSON.parse(localStorage.getItem('favorite')));
 
     const handleRemoveItem = (currentId) => {
-        getFavoriteFromLocalStorage.forEach((item, key) => {
+        favorite.forEach((item, key) => {
             if(item.id === currentId) {
-                getFavoriteFromLocalStorage.splice(key, 1);
-                localStorage.setItem('favorite', JSON.stringify(getFavoriteFromLocalStorage));
+                favorite.splice(key, 1);
+                localStorage.setItem('favorite', JSON.stringify(favorite));
+                setFavorite(JSON.parse(localStorage.getItem('favorite')));
             };
         });
     };
 
-    const displayFavorite = getFavoriteFromLocalStorage.map((item, index) => {
+    const displayFavorite = favorite.map((item, index) => {
         return(
             <div key={index} className="favorite-item">
-                <img src={`${item.imgURL}${item.poster_path}`} className="favorite-img" />
+                <Link to={`/movie/${item.id}`}>
+                    <img src={`${item.imgURL}${item.poster_path}`} className="favorite-img" />
+                </Link>
                 
                 <div className="favorite-right-side">
                     <div className="favorite-inline-items">

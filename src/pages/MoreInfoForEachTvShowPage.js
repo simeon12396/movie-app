@@ -41,6 +41,16 @@ const MoreInfoFromEachTvShowPage = (props) => {
 
     const imageUrlApi = 'http://image.tmdb.org/t/p/original';
 
+    let favoriteArray = [];
+
+    const handleAddToFavorite = () => {
+        let movieData = {...primaryDataTvShow, imgURL: imageUrlApi };
+        const getLatestFavoriteItems = JSON.parse(localStorage.getItem('favorite'));
+        favoriteArray = [...getLatestFavoriteItems];
+        favoriteArray.push(movieData);
+        localStorage.setItem('favorite', JSON.stringify(favoriteArray))
+    };
+
     if(primaryDataTvShow && staffTvShow && keywordsTvShow) {
 
         const eachKeyword = keywordsTvShow.results.map((keyword, index) => {
@@ -106,7 +116,7 @@ const MoreInfoFromEachTvShowPage = (props) => {
                                     placement='bottom'
                                     overlay={<Tooltip id='tooltip-add-to-favorite'>Add to favorite </Tooltip>}
                                 >
-                                    <button className="tv-show-add-to-favorite">
+                                    <button className="tv-show-add-to-favorite" onClick={handleAddToFavorite}>
                                         <FontAwesomeIcon icon={faHeart} className="icons" />
                                     </button>
                                 </OverlayTrigger>
