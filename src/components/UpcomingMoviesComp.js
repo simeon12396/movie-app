@@ -20,7 +20,18 @@ const UpcomingMoviesComp = () => {
         infinite: true,
         speed: 400,
         cssEase: 'linear',
-        dots: false
+        dots: false,
+        responsive: [
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    infinite: true,
+                    arrows: false
+                } 
+            }
+        ]
     };
 
     const imageUrlApi = 'http://image.tmdb.org/t/p/original';
@@ -55,8 +66,6 @@ const UpcomingMoviesComp = () => {
                             <Link to={`/movie/${movie.id}`}>
                                 <span className="slide-overview">{sliceText(movie.overview)}</span>
                             </Link>
-        
-                            <button className="btn btn-primary slider-btn">Watch trailer</button>
                         </div>
     
                         <img src={`${imageUrlApi}${movie.backdrop_path}`} className="slide-img" alt="" />

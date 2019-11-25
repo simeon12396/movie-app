@@ -19,7 +19,45 @@ const ParticularTvShows = (props) => {
         infinite: true,
         speed: 400,
         cssEase: 'linear',
-        dots: false
+        dots: false,
+        responsive: [
+            {
+                breakpoint: 1200,
+                settings: {
+                    slidesToShow: 5,
+                    slidesToScroll: 1,
+                    infinite: true,
+                    arrows: false
+                }
+            },
+            {
+                breakpoint: 992,
+                settings: {
+                    slidesToShow: 4,
+                    slidesToScroll: 1,
+                    infinite: true,
+                    arrows: false
+                } 
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                    infinite: true,
+                    arrows: false
+                } 
+            },
+            {
+                breakpoint: 576,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    infinite: true,
+                    arrows: false
+                } 
+            }
+        ]
     };
 
     const imageUrlApi = 'http://image.tmdb.org/t/p/original';

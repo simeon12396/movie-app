@@ -10,3 +10,21 @@
         transition: all .5s ease-in-out;
     }
 }
+
+@media only screen and (max-width: 1200px) {
+      .home-page {
+
+        main {
+            margin-left: 73px;
+        }
+      }
+}
+
+@media only screen and (max-width: 576px) {
+    .home-page {
+
+      main {
+          margin-left: 0px;
+      }
+    }
+}

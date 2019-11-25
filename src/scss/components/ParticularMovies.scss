@@ -39,6 +39,7 @@
                 height: 80%;
                 background-position: center;
                 margin-bottom: 10px;
+                width: 100%;
 
                 &:hover {
                     cursor: pointer;
@@ -49,6 +50,7 @@
                 display: -webkit-box;
                 display: -ms-flexbox;
                 display: flex;
+                flex-wrap: wrap;
             }
 
             &-average {
@@ -103,3 +105,50 @@
     }
   }
   
+
+  @media only screen and (max-width: 1200px) {
+    .particular-movies {
+
+        &-slider {
+
+            .each-movie {
+                margin-right: 10px;
+
+                &:last-of-type {
+                    margin-right: 0;
+                }
+
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .particular-movies {
+        &-heading {
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+
+        &-explore {
+            display: block;
+            text-align: center;
+        }
+
+        &-slider {
+            
+            .slick-slide {
+                display: flex;
+                justify-content: center;
+            }
+
+            .each-movie {
+
+                &-title {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

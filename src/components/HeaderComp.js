@@ -1,7 +1,7 @@
 import React from 'react';
 import '../scss/components/HeaderComp.scss';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHome, faUserPlus, faSignInAlt, faSignOutAlt, faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faHome, faUserPlus, faSignInAlt, faSignOutAlt, faHeart, faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 const HeaderComp = () => {
@@ -24,11 +24,32 @@ const HeaderComp = () => {
     const handleFavoriteListItem = () => {
         const favoriteListItem = document.querySelector('.header-li--favorite');
         favoriteListItem.classList.toggle('header-li--favorite-active')
+        console.log('work')
+    };
+
+    const handleFavoriteListItemMobile = () => {
+        const favoriteListItem = document.querySelector('.header-nav-mobile .header-li--favorite');
+        favoriteListItem.classList.toggle('header-li--favorite-active')
+        console.log('work')
+    };
+
+    const handleHamburgerMenu = () => {
+        const hamburger = document.querySelector('.header-hamburger');
+        const navMobile = document.querySelector('.header-nav-mobile');
+
+        hamburger.classList.toggle('header-hamburger--change');
+        navMobile.classList.toggle('header-nav-mobile--change');
     };
 
     return (
         <div className="header-comp">
             <header className="header">
+                <div className="header-hamburger" onClick={handleHamburgerMenu}>
+                    <FontAwesomeIcon icon={faBars} className="icons" />
+
+                    <FontAwesomeIcon icon={faTimes} className="icons" />
+                </div>
+
                 <nav className="header-nav">
                     <li className="header-li">
                         <Link to="/">
@@ -74,6 +95,52 @@ const HeaderComp = () => {
                                     <Link to="/login">
                                         <FontAwesomeIcon icon={faSignInAlt} className="icons" />
                                         <span className="header-tooltip">Login</span>
+                                    </Link>
+                                </li>
+                            </div>
+                        )
+                    }
+                </nav>
+                
+                <nav className="header-nav-mobile">
+                    <li className="header-li">
+                        <Link to="/">
+                            <FontAwesomeIcon icon={faHome} className="icons" />
+                        </Link>
+                    </li>
+
+                    {
+                        (isAuthenticated) ? 
+                        (
+                            <div>
+                                <li className="header-li header-li--profile" onClick={handleFavoriteListItemMobile}>
+                                    <span>{getFirstLetterFromUsername()}</span>
+                                </li>
+
+                                <li className="header-li header-li--favorite">
+                                    <Link to="/user/favorite">
+                                        <FontAwesomeIcon icon={faHeart} className="icons" />
+                                    </Link>
+                                </li>
+
+                                <li className="header-li">
+                                    <Link to="/" onClick={handleLogout}>
+                                        <FontAwesomeIcon icon={faSignOutAlt} className="icons" />
+                                    </Link>
+                                </li>
+                            </div>
+                        ) : 
+                        (
+                            <div>
+                                <li className="header-li">
+                                    <Link to="/register">
+                                        <FontAwesomeIcon icon={faUserPlus} className="icons" />
+                                    </Link>
+                                </li>
+
+                                <li className="header-li">
+                                    <Link to="/login">
+                                        <FontAwesomeIcon icon={faSignInAlt} className="icons" />
                                     </Link>
                                 </li>
                             </div>

@@ -39,6 +39,7 @@
                 height: 80%;
                 background-position: center;
                 margin-bottom: 10px;
+                width: 100%;
 
                 &:hover {
                     cursor: pointer;
@@ -103,3 +104,50 @@
     }
   }
   
+
+  @media only screen and (max-width: 1200px) {
+    .particular-tv-shows {
+
+        &-slider {
+
+            .each-tv-show {
+                margin-right: 10px;
+
+                &:last-of-type {
+                    margin-right: 0;
+                }
+
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .particular-tv-shows {
+        &-heading {
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+
+        &-explore {
+            display: block;
+            text-align: center;
+        }
+        
+        &-slider {
+
+            .slick-slide {
+                display: flex;
+                justify-content: center;
+            }
+
+            .each-tv-show {
+
+                &-title {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

@@ -16,6 +16,7 @@
         min-height: 100vh;
         background-color: #1d253c;
         color: white;
+        
 
         &-tooltip {
             clip-path: polygon(25% 0%, 100% 1%, 100% 100%, 25% 100%, 0% 50%);
@@ -36,6 +37,10 @@
         &-nav {
             display: flex;
             flex-direction: column;  
+        }
+
+        &-nav-mobile {
+            display: none;
         }
 
         &-li {
@@ -87,3 +92,89 @@
     transition: all .2s linear;
     opacity: 1;
 }
+
+@media only screen and (max-width: 1200px) {
+    .header-comp {
+        
+        .header {
+            padding: 2rem 1rem 0;
+        }
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .header-comp {
+        
+        .header {
+            min-height: 0;
+            width: 100vw;
+            padding: 0;
+
+            &-li--profile {
+                margin: 0 auto;
+            }
+            &-nav {
+                display: none;
+            }
+
+            &-nav-mobile--change {
+                z-index: 100;
+                display: block;
+                flex-direction: column;
+                border-bottom: 1px solid #007bff;
+            }
+
+            &-hamburger {
+                position: absolute;
+                right: 5px;
+                top: 5px;
+                color: black;
+                width: 25px;
+                height: 25px;
+                z-index: 9999;
+                transition: all .3s linear;
+                width: 25px;
+                height: 25px;
+
+                & > * {
+                    width: inherit;
+                    height: inherit;
+                }
+
+                .icons:nth-of-type(2) {
+                    display: none;
+                }
+
+                &--change {
+                    color: white;
+
+                    .icons:nth-of-type(1) {
+                        display: none;
+                    }
+
+                    .icons:nth-of-type(2) {
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 577px) {
+    .header-comp {
+        
+        .header {
+            &-nav-mobile,
+            &-hamburger {
+                display: none;
+            }
+            
+            &-nav {
+                display: block;
+            }
+
+        }
+    }
+}
+
