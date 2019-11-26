@@ -82,36 +82,38 @@ const SpecialPersonPage = (props) => {
 
                             <h3>Personal Info</h3>
 
-                            <div className="person-box">
-                                <h5>Known for</h5>
-                                <span>{fetchPersonInformation.known_for_department}</span>
-                            </div>
-
-                            <div className="person-box">
-                                <h5>Gender</h5>
-                               {genderType()}
-                            </div>
-
-                            <div className="person-box">
-                                <h5>Also known as</h5>
-                                <div className="person-nicknames-flex">
-                                 {knownAs}
+                            <div className="person-boxes-container">
+                                <div className="person-box">
+                                    <h5>Known for</h5>
+                                    <span>{fetchPersonInformation.known_for_department}</span>
                                 </div>
-                            </div>
 
-                            <div className="box">
-                                <h5>Birthday</h5>
-                                <span>{fetchPersonInformation.birthday}</span>
-                            </div>
+                                <div className="person-box">
+                                    <h5>Gender</h5>
+                                {genderType()}
+                                </div>
 
-                            <div className="box">
-                                <h5>Death day</h5>
-                                {hasDeathDay()}
-                            </div>
+                                <div className="person-box">
+                                    <h5>Also known as</h5>
+                                    <div className="person-nicknames-flex">
+                                    {knownAs}
+                                    </div>
+                                </div>
 
-                            <div className="box">
-                                <h5>Place of birthday</h5>
-                                <span>{fetchPersonInformation.place_of_birth}</span>
+                                <div className="box">
+                                    <h5>Birthday</h5>
+                                    <span>{fetchPersonInformation.birthday}</span>
+                                </div>
+
+                                <div className="box">
+                                    <h5>Death day</h5>
+                                    {hasDeathDay()}
+                                </div>
+
+                                <div className="box">
+                                    <h5>Place of birthday</h5>
+                                    <span>{fetchPersonInformation.place_of_birth}</span>
+                                </div>
                             </div>
                         </div>
 

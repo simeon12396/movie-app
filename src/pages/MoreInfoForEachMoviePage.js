@@ -17,30 +17,27 @@ import { Link } from "react-router-dom";
 
 const MoreInfoForEachMoviePage = (props) => {
 
-    const sliderSettingsCast = {
-        arrows: true,
-        slidesToShow: 5,
-        slidesToScroll: 5,
-        autoplay: true,
-        pauseOnHover: true,
-        autoplaySpeed: 6000,
-        infinite: true,
-        speed: 400,
-        cssEase: 'linear',
-        dots: false
-    };
-
-    const sliderSettingsCrew = {
-        arrows: true,
-        slidesToShow: 2,
-        slidesToScroll: 2,
+    const sliderSettings = {
+        arrows: false,
+        slidesToShow: 4,
+        slidesToScroll: 1,
         autoplay: true,
         pauseOnHover: true,
         autoplaySpeed: 6000,
         infinite: false,
         speed: 400,
         cssEase: 'linear',
-        dots: false
+        dots: false,
+        responsive: [
+            {
+                breakpoint: 1200,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                    infinite: true,
+                    arrows: false
+                }
+            }]
     };
 
     const movieId = props.match.params.id;
@@ -213,13 +210,13 @@ const MoreInfoForEachMoviePage = (props) => {
                         </TabList>
 
                         <TabPanel>
-                            <Slider {...sliderSettingsCast} className="movie-cast-slider">
+                            <Slider {...sliderSettings} className="movie-cast-slider">
                                 {eachPersonFromCast}
                             </Slider>
                         </TabPanel>
 
                         <TabPanel>
-                            <Slider {...sliderSettingsCrew} className="movie-cast-slider">
+                            <Slider {...sliderSettings} className="movie-cast-slider">
                                 {eachPersonFromCrew}
                             </Slider>
                         </TabPanel>

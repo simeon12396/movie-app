@@ -17,7 +17,7 @@ import { Link } from "react-router-dom";
 
 const MoreInfoFromEachTvShowPage = (props) => {
     const sliderSettings = {
-        arrows: true,
+        arrows: false,
         slidesToShow: 5,
         slidesToScroll: 5,
         autoplay: true,

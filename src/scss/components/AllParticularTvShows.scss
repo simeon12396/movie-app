@@ -11,6 +11,7 @@
         flex: 0 1 10%;
         color: white;
         display: flex;
+        flex-wrap: wrap;
         flex-direction: column;
         justify-content: center;
         align-items: center;
@@ -43,6 +44,7 @@
             display: -webkit-box;
             display: -ms-flexbox;
             display: flex;
+            flex-wrap: wrap;
         }
     
         &-average {
@@ -68,5 +70,37 @@
             opacity: 0;
             background-color: transparent;
         }
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .all-particular-tv-shows main {
+        margin-left: 55px;
+
+        .each-movie-average {
+            margin: 0 auto;
+        }
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .all-particular-tv-shows main  .each-show {
+        margin: 10px 30px;
+        flex: 0 1 20%;
+    }
+}
+
+
+@media only screen and (max-width: 576px) {
+    .all-particular-tv-shows main {
+        margin-left: 0;
+        width: 100vw;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .all-particular-tv-shows main  .each-show {
+        margin: 10px;
+        flex: 0 1 50%;
     }
 }

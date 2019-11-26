@@ -135,3 +135,41 @@
         }
     }
 }
+
+@media only screen and (max-width: 768px) {
+    .favorite-page {
+
+        .favorite {
+
+            &-line {
+                display: none;
+            }
+
+            &-right-side {
+                
+                span {
+                    margin: 5px 5px;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .favorite-page {
+
+        .favorite {
+            margin-left: 0px;
+            padding-bottom: 10px;
+            
+            &-item {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            &-inline-items {
+                margin-bottom: 5px;
+            }
+        }
+    }
+}
