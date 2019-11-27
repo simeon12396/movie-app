@@ -161,6 +161,11 @@
                 &-nicknames-flex {
                     width: 100%;
                 }
+
+                &-overlay-img,
+                &-close {
+                    display: none;
+                }
             }
         }
     }

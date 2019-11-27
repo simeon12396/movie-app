@@ -22,22 +22,23 @@ const MoreInfoForEachMoviePage = (props) => {
         slidesToShow: 4,
         slidesToScroll: 1,
         autoplay: true,
-        pauseOnHover: true,
+        pauseOnHover: false,
         autoplaySpeed: 6000,
-        infinite: false,
+        infinite: true,
         speed: 400,
         cssEase: 'linear',
         dots: false,
         responsive: [
             {
-                breakpoint: 1200,
+                breakpoint: 576,
                 settings: {
-                    slidesToShow: 3,
+                    slidesToShow: 1,
                     slidesToScroll: 1,
                     infinite: true,
                     arrows: false
-                }
-            }]
+                } 
+            }
+        ]
     };
 
     const movieId = props.match.params.id;
