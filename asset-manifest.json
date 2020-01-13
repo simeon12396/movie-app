@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/simeon12396/affiliate-2019.git/static/css/main.4a585bae.chunk.css",
+    "main.js": "/simeon12396/affiliate-2019.git/static/js/main.48711b66.chunk.js",
+    "main.js.map": "/simeon12396/affiliate-2019.git/static/js/main.48711b66.chunk.js.map",
+    "runtime-main.js": "/simeon12396/affiliate-2019.git/static/js/runtime-main.e00bbffe.js",
+    "runtime-main.js.map": "/simeon12396/affiliate-2019.git/static/js/runtime-main.e00bbffe.js.map",
+    "static/css/2.b54c95ed.chunk.css": "/simeon12396/affiliate-2019.git/static/css/2.b54c95ed.chunk.css",
+    "static/js/2.15d012f7.chunk.js": "/simeon12396/affiliate-2019.git/static/js/2.15d012f7.chunk.js",
+    "static/js/2.15d012f7.chunk.js.map": "/simeon12396/affiliate-2019.git/static/js/2.15d012f7.chunk.js.map",
+    "index.html": "/simeon12396/affiliate-2019.git/index.html",
+    "precache-manifest.af1630557d05f09c42d1972a83594f7b.js": "/simeon12396/affiliate-2019.git/precache-manifest.af1630557d05f09c42d1972a83594f7b.js",
+    "service-worker.js": "/simeon12396/affiliate-2019.git/service-worker.js",
+    "static/css/2.b54c95ed.chunk.css.map": "/simeon12396/affiliate-2019.git/static/css/2.b54c95ed.chunk.css.map",
+    "static/css/main.4a585bae.chunk.css.map": "/simeon12396/affiliate-2019.git/static/css/main.4a585bae.chunk.css.map",
+    "static/media/slick-theme.css": "/simeon12396/affiliate-2019.git/static/media/slick.f97e3bbf.svg",
+    "static/media/user-image.png": "/simeon12396/affiliate-2019.git/static/media/user-image.832eefcf.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e00bbffe.js",
+    "static/css/2.b54c95ed.chunk.css",
+    "static/js/2.15d012f7.chunk.js",
+    "static/css/main.4a585bae.chunk.css",
+    "static/js/main.48711b66.chunk.js"
+  ]
+}
