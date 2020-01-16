@@ -41,13 +41,11 @@ const RegisterPage = (props) => {
                         <label htmlFor="name" className="register-label">Name</label>
                         <input type="text" placeholder="Enter your name" name="name" id="name" className="register-input" 
                             ref={register({
-                                required: true,
-                                pattern: /^[A-Z][a-z0-9_-]{3,10}$/
+                                required: true
                         })} />
 
                         {(errors.name && errors.name.type === 'required') && <p>This is required</p>}
-                        {(errors.name && errors.name.type === 'pattern') && <p>Your name must be start with capital letter and must be between 3 to 10 characters.</p>}
-
+                        
                         <label htmlFor="username" className="register-label">Username</label>
                         <input type="text" placeholder="Enter your username" name="username" id="username" className="register-input" ref={register({
                             required: true,

@@ -11,15 +11,20 @@ const LoginPage = (props) => {
     const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers'));
     
     const onSubmit = (data) => {
-        if((registeredUsers.username === data.username) && (registeredUsers.password === data.password)) {
-            localStorage.setItem('authenticatedUsers', JSON.stringify(data));
-            localStorage.setItem('isAuthenticated', true);
-            localStorage.setItem('favorite', JSON.stringify([]));
-            alert('Congratulations! You are logged in!')
-            setTimeout(props.history.push('/'), 2000);
-         } else {
-            alert("Account doesn't exist!")
-        }
+        if(!JSON.parse(localStorage.getItem('registeredUsers'))) {
+          alert('First we make an account!');
+          props.history.push('/register');
+        } else {
+            if((registeredUsers.username === data.username) && (registeredUsers.password === data.password)) {
+                localStorage.setItem('authenticatedUsers', JSON.stringify(data));
+                localStorage.setItem('isAuthenticated', true);
+                localStorage.setItem('favorite', JSON.stringify([]));
+                alert('Congratulations! You are logged in!')
+                setTimeout(props.history.push('/'), 2000);
+             } else {
+                alert("Account doesn't exist!")
+            }
+        };
     };
 
     return(        

@@ -56,11 +56,16 @@ const MoreInfoForEachMoviePage = (props) => {
     let favoriteArray = [];
 
     const handleAddToFavorite = () => {
-        let movieData = {...primaryDataMovie, imgURL: imageUrlApi };
-        const getLatestFavoriteItems = JSON.parse(localStorage.getItem('favorite'));
-        favoriteArray = [...getLatestFavoriteItems];
-        favoriteArray.push(movieData);
-        localStorage.setItem('favorite', JSON.stringify(favoriteArray))
+        if(JSON.parse(localStorage.getItem('isAuthenticated'))) {
+            let movieData = {...primaryDataMovie, imgURL: imageUrlApi };
+            const getLatestFavoriteItems = JSON.parse(localStorage.getItem('favorite'));
+            favoriteArray = [...getLatestFavoriteItems];
+            favoriteArray.push(movieData);
+            localStorage.setItem('favorite', JSON.stringify(favoriteArray))
+        } else {
+            alert('First we have to login!')
+            props.history.push('/login')
+        };
     };
 
     if(primaryDataMovie && staffMovie && keywordsMovie) {
